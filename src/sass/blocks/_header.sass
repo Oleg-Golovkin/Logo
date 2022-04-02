@@ -1,6 +1,6 @@
 
 .header
-    &__content
+    &__main
         display: flex
         justify-content: space-between
         width: 100%
@@ -16,26 +16,23 @@
 
     &__content-ul
         display: grid
-        max-width: 419px
         grid-template-columns: repeat(3, auto)
         grid-template-rows: 27px 27px
         padding-left: 0
         li
             list-style: none
-
             a
                 font-family: Play
                 font-size: rem(14)
                 line-height: 18px
                 font-weight: 700
                 text-decoration: underline
-                color: #ffffff
+                color: var(--color-ffffff)
                 opacity: 0.9
                 padding: 5px 18px
                 &:active
-                    background-color: #068292
+                    background-color: var(--color-068292)
                     border-radius: 100px
-                // text-decoration: none
     &__logo
         position: absolute
         left: 50%
@@ -44,26 +41,26 @@
         height: 33px
         margin-top: 13px
         font-family: Play
-        font-size: 48px
+        font-size: rem(48)
         line-height: 18px
         font-weight: 700
         text-transform: uppercase
-        color: #ffffff
+        color: var(--color-ffffff)
     &__logo-dsc
         height: 13px
         margin-top: 14px
-        font-family: Roboto
-        font-size: 12px
+        font-size: rem(12)
         line-height: 18px
         font-weight: 300
         letter-spacing: 0.05em
-        color: #ffffff
-
+        color: var(--color-ffffff)
     &__contacts
-        width: 419px
+        width: 400px
         display: flex
         justify-content: space-between
         align-items: center
+        flex-wrap: wrap
+
     &__contacts-first
         display: flex
         align-items: center
@@ -76,38 +73,71 @@
             height: 100%
     &__contacts-wrapper
         a
-            font-family: Roboto
-            font-size: 18px
+            font-size: rem(18)
             font-weight: 900
             text-transform: uppercase
-            color: #ffffff
+            color: var(--color-ffffff)
             text-decoration: none
         &__city
-            font-family: Roboto
             text-align: right
-            font-size: 12px
+            font-size: rem(12)
             line-height: 18px
             font-weight: 300
-            color: #ffffff
+            color: #ffffff var(--color-ffffff)
     &__contacts-second
-        border-left: 1px solid white
         position: relative
         a
             display: inline-block
-            
-            // position: absolute
-            // left: 100%
-            transform: translateX(15%)
-            font-family: Roboto
-            font-size: 18px
+            font-size: rem(18)
             font-weight: 900
             text-transform: uppercase
-            color: #ffffff
+            color: var(--color-ffffff)
             text-decoration: none
+        &::before
+            content: ""
+            position: absolute
+            top: 8px
+            left: -30px
+            display: block
+            background-color: white
+            width: 1px
+            height: 28px
     &__city
-        font-family: Roboto
-        text-align: right
-        font-size: 12px
+        font-size: rem(12)
         line-height: 18px
         font-weight: 300
-        color: #ffffff
+        color: var(--color-ffffff)
+
+    &__secondary
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        margin-top: 20px
+    &__sub-secondary
+        display: flex
+        justify-content: space-between
+        width: 450px
+    &__sub-secondary-wrapper
+        display: flex
+        align-items: center
+        a
+            text-decoration: none
+            border-bottom: 1px dashed
+    &__sub-secondary-img
+        margin-right: 12px
+    &__sub-secondary-dsc
+        font-size: 14px
+        line-height: 18px
+        font-weight: 300
+        color: var(--color-999999)
+    &__sub-secondary-dsc_blue
+        color: var(--color-1ab9ce)
+    &__sub-secondary-dsc_gray
+        border-bottom: 1px dashed var(--color-999999)
+    &__sub-secondary-dsc_color-font
+        color: var(--color-999999)
+        font-size: 12px
+    &__sub-secondary-days
+        span
+            font-family: Roboto
+            font-weight: 900
