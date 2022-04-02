@@ -2,10 +2,10 @@
 .header
     &__main
         display: flex
+        flex-wrap: wrap
         justify-content: space-between
         width: 100%
         padding-top: 14px
-        padding-right: 48px
     &__bg
         background-image: url("../img/bg/header.png")
         background-position: center center
@@ -19,6 +19,7 @@
         grid-template-columns: repeat(3, auto)
         grid-template-rows: 27px 27px
         padding-left: 0
+        width: 38%
         li
             list-style: none
             a
@@ -34,9 +35,7 @@
                     background-color: var(--color-068292)
                     border-radius: 100px
     &__logo
-        position: absolute
-        left: 50%
-        transform: translateX(-50%)
+        width: 130px
     &__logo-main
         height: 33px
         margin-top: 13px
@@ -55,7 +54,7 @@
         letter-spacing: 0.05em
         color: var(--color-ffffff)
     &__contacts
-        width: 400px
+        width: 38%
         display: flex
         justify-content: space-between
         align-items: center
@@ -64,6 +63,8 @@
     &__contacts-first
         display: flex
         align-items: center
+        justify-content: space-between
+        width: 186px
     &__img-wrapper
         width: 19px
         height: 25px
@@ -86,6 +87,7 @@
             color: #ffffff var(--color-ffffff)
     &__contacts-second
         position: relative
+        margin-right: 48px
         a
             display: inline-block
             font-size: rem(18)
@@ -97,7 +99,7 @@
             content: ""
             position: absolute
             top: 8px
-            left: -30px
+            left: -15px
             display: block
             background-color: white
             width: 1px
