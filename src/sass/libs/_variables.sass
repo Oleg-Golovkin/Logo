@@ -1,3 +1,4 @@
+// Для автоматического перевода rem em и pcr в пиксели
 @function pcr($pxOne, $pxTwo)
     $result: math.div($pxOne, $pxTwo) * 100%
     @return $result
@@ -10,6 +11,10 @@
     $result: math.div($px, 16) + em
     @return $result
 
+$maxWidthContainer: 1180
+$maxWidth: 1920
+
+// Цвета
 :root
     --color-000000:#000000
     --color-009cb0:#009cb0
