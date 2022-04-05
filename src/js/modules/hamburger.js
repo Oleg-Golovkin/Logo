@@ -1,50 +1,75 @@
 const hamburger = () => {
-    const hamburger = document.querySelector(".hamburger"),
+
+    const hamburger = document.querySelectorAll(".hamburger"),
         menu = document.querySelector(".menu"),
-        close = document.querySelector(".close"),
         menuBackground = document.querySelector(".menu__background"),
-        headerContent = document.querySelector(".header__content-ul"),        
-        headerMain = document.querySelector(".header__main");
+        // Перемещение блоков
+        headerMain = document.querySelector(".header__main"),
+        headerContentUl = document.querySelector(".header__content-ul"),
+        headerSecondary = document.querySelector(".header__secondary"),
+        headerSubSecondary = document.querySelectorAll(".header__sub-secondary");
 
-    function hideHeaderContent(){
-        headerMain.prepend(headerContent);
-        headerContent.classList.remove('header__content-ul_menu');
-       
+    function activeHamburger() {
+        hamburger.forEach(item => {
+            item.classList.add("is-active");
+        });
     }
 
-    function showHeaderContent(){        
-        menu.prepend(headerContent);
-        headerContent.classList.add('header__content-ul_menu');  
+    function deactivationHamburger() {
+        hamburger.forEach(item => {
+            item.classList.remove("is-active");
+        });
     }
 
-    function hideMenu() {
-        hamburger.classList.remove("is-active");
-        menu.style.left = "-200px";
-        hamburger.parentElement.classList.remove("is-active");
-        menuBackground.style.visibility = "hidden";
-        menuBackground.style.opacity = "0";
-        hideHeaderContent();        
+    function activeReplacement() {
+        menu.append(headerContentUl);
+        headerSubSecondary.forEach(item => {
+            menu.append(item);
+        });
+    }
+
+    function deactivationReplacement() {
+        headerMain.prepend(headerContentUl);
+        headerSubSecondary.forEach(item => {
+            headerSecondary.append(item);
+        });
     }
 
     function showMenu() {
-        hamburger.classList.add("is-active");
+        activeHamburger();
+        activeReplacement();
         menu.style.left = "0px";
         menuBackground.style.visibility = "visible";
         menuBackground.style.opacity = "1";
-        showHeaderContent();  
+
     }
 
-    hamburger.addEventListener("click", (e) => {
-        showMenu();              
+    function hideMenu() {
+        deactivationHamburger();
+        setTimeout(()=> deactivationReplacement(), 400);
+        menu.style.left = "-200px";
+        menuBackground.style.visibility = "hidden";
+        menuBackground.style.opacity = "0";
+    }
+
+    hamburger.forEach(item => {
+        item.addEventListener("click", (e) => {
+            console.log('fsdf');
+            showMenu();
+        });
     });
+
 
     menuBackground.addEventListener("click", (e) => {
         hideMenu();
     });
 
-    close.addEventListener("click", (e) => {
-        hideMenu();
-    });    
+
+    hamburger.forEach(item => {
+        item.addEventListener("click", (e) => {
+            showMenu();
+        });
+    });
 };
 
 export default hamburger;
