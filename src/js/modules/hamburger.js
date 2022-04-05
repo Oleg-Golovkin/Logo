@@ -3,8 +3,7 @@ const hamburger = () => {
         menu = document.querySelector(".menu"),
         close = document.querySelector(".close"),
         menuBackground = document.querySelector(".menu__background"),
-        headerContent = document.querySelector(".header__content-ul"),
-        
+        headerContent = document.querySelector(".header__content-ul"),        
         headerMain = document.querySelector(".header__main");
 
     function hideHeaderContent(){
@@ -24,8 +23,7 @@ const hamburger = () => {
         hamburger.parentElement.classList.remove("is-active");
         menuBackground.style.visibility = "hidden";
         menuBackground.style.opacity = "0";
-        hideHeaderContent();
-        
+        hideHeaderContent();        
     }
 
     function showMenu() {
