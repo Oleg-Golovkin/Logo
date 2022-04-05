@@ -3,8 +3,20 @@ const hamburger = () => {
         menu = document.querySelector(".menu"),
         close = document.querySelector(".close"),
         menuBackground = document.querySelector(".menu__background"),
-        headerContent = document.querySelector(".menu .header__content-ul"),
+        headerContent = document.querySelector(".header__content-ul"),
+        
         headerMain = document.querySelector(".header__main");
+
+    function hideHeaderContent(){
+        headerMain.prepend(headerContent);
+        headerContent.classList.remove('header__content-ul_menu');
+       
+    }
+
+    function showHeaderContent(){        
+        menu.prepend(headerContent);
+        headerContent.classList.add('header__content-ul_menu');  
+    }
 
     function hideMenu() {
         hamburger.classList.remove("is-active");
@@ -12,19 +24,8 @@ const hamburger = () => {
         hamburger.parentElement.classList.remove("is-active");
         menuBackground.style.visibility = "hidden";
         menuBackground.style.opacity = "0";
-        // hideHeaderContent();
-        // headerMain.prepend(headerContent);
-        // headerContent.style.display = "none";
-    }
-
-    headerContent.style.display = "block";
-    function hideHeaderContent(){
-        headerContent.remove();       
-    }
-
-    function showHeaderContent(){
-        // menu.prepend(headerContent);
-        // headerContent.style.display = "block";
+        hideHeaderContent();
+        
     }
 
     function showMenu() {
@@ -32,13 +33,11 @@ const hamburger = () => {
         menu.style.left = "0px";
         menuBackground.style.visibility = "visible";
         menuBackground.style.opacity = "1";
-        // hideHeaderContent();
-        // showHeaderContent();  
+        showHeaderContent();  
     }
 
     hamburger.addEventListener("click", (e) => {
-        showMenu();
-              
+        showMenu();              
     });
 
     menuBackground.addEventListener("click", (e) => {
