@@ -1,7 +1,8 @@
 "use strict";
-import Calculator from "./modules/calculator";
+import hamburger from "./modules/hamburger";
+
 document.addEventListener("DOMContentLoaded", () => {
     /* После полной загрузки HTML выполняется JS */
-    Calculator();
+    hamburger();
 
 });

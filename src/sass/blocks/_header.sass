@@ -19,7 +19,6 @@
         justify-content: space-between
         width: 100%
         padding-top: 14px
-
     &__bg
         background-image: url("../img/bg/header.png")
         background-position: center center
@@ -27,6 +26,8 @@
         background-repeat: no-repeat
         width: 100%
         height: 140px
+        @media ( max-width: 936px )
+            background-position: left
 
     &__content-ul
         display: grid
@@ -145,11 +146,21 @@
         justify-content: space-between
         flex-wrap: wrap
         margin-top: 20px
+        @media ( max-width: 812px )
+            flex-direction: column
+            align-items: center
+
     &__sub-secondary
         display: flex
         justify-content: space-between
         flex-wrap: wrap
         width: 450px
+        @media ( max-width: 1200px )
+            width: 370px
+        @media ( max-width: 812px )
+            &:last-child
+                margin-top: 15px
+
     &__sub-secondary-wrapper
         display: flex
         align-items: center
