@@ -1,0 +1,57 @@
+
+.aside-menu
+    display: flex
+    position: relative
+    flex-direction: column
+    background: url(../img/bg/aside-menu.jpg) no-repeat center center/cover
+    max-width: 261px
+    max-height: 703px
+    padding: 9px 0px 0px 0px
+    top: 174px
+    overflow: hidden
+
+    &__title
+        font-family: UniSansCaps
+        font-size: rem(30)
+        line-height: 1.2
+        font-weight: 900
+        text-transform: uppercase
+        letter-spacing: 0.025em
+        color: var(--color-ffffff)
+        max-width: 137px
+        max-height: 58px
+        left: 0.7em
+        position: relative
+
+    &__links
+
+        width: 100%
+        list-style: none
+        padding: 23px 0 0 0 
+    &__link
+        position: relative
+        border-bottom: 1px solid var(--color-1aa7b9)
+        &:active
+            background: var(--color-098494)
+
+        a
+            position: relative
+            text-decoration: none
+            font-family: Roboto
+            font-size: rem(12)
+            line-height: 3.3333em
+            font-weight: 300
+            letter-spacing: 0.025em
+            color: #ffffff
+            left: 21px
+    &__link[data-arrow]
+        &::before
+            content: ""
+            display: inline-block
+            position: absolute
+            width: 14px
+            height: 14px
+            right: 10px
+            bottom: 0
+            top: 14px
+            background: url(../icons/strelka_4684.png) right no-repeat
