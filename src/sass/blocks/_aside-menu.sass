@@ -1,4 +1,12 @@
 
+.aside
+    max-width: 261px
+    max-height: 703px
+    position: relative
+    top: 174px
+    // overflow: hidden
+    
+
 .aside-menu
     display: flex
     position: relative
@@ -7,9 +15,6 @@
     max-width: 261px
     max-height: 703px
     padding: 9px 0px 0px 0px
-    top: 174px
-    overflow: hidden
-
     &__title
         font-family: UniSansCaps
         font-size: rem(30)
@@ -24,10 +29,11 @@
         position: relative
 
     &__links
-
         width: 100%
         list-style: none
-        padding: 23px 0 0 0 
+        padding: 23px 0 0 0
+        &_view
+            border-bottom: 1px solid var(--color-dedede)
     &__link
         position: relative
         border-bottom: 1px solid var(--color-1aa7b9)
@@ -44,6 +50,14 @@
             letter-spacing: 0.025em
             color: #ffffff
             left: 21px
+        &_view
+            border-bottom: none
+            &:active
+                background: var(--color-71c7d3)
+            a
+                color: var(--color-1ab9ce)
+                text-decoration: none
+
     &__link[data-arrow]
         &::before
             content: ""
@@ -55,3 +69,22 @@
             bottom: 0
             top: 14px
             background: url(../icons/strelka_4684.png) right no-repeat
+    &__wrapper
+        width: calc(200% + 20px)
+        
+        // overflow: hidden
+    &__drawing
+        transition: 1s all
+        position: absolute
+        top: 0
+        width: 281px
+        max-height: 703px
+        background-color: var(--color-ffffff)
+        border: 2px solid var(--color-098494)
+        transform: translate(calc(93%))
+        z-index: -1 
+    &__views
+        max-width: 188px
+        border-bottom: 1px solid var(--color-dedede)
+
+    // &__view
