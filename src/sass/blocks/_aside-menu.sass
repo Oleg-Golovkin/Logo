@@ -1,10 +1,20 @@
 
 .aside
-    max-width: 261px
+    width: 261px
     max-height: 703px
     position: relative
     top: 174px 
     // overflow: hidden
+.main
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+.content-logo
+    width: 400px
+    height: 700px
+    background-color: black
+    z-index: 1
+
     
 
 .aside-menu
@@ -70,9 +80,7 @@
             top: 14px
             background: url(../icons/strelka_4684.png) right no-repeat
     &__wrapper
-        width: calc(200% + 20px)
-        
-        // overflow: hidden
+        width: calc(200% + 20px)        
     &__drawing
         transition: 1s all
         position: absolute
@@ -82,7 +90,7 @@
         background-color: var(--color-ffffff)
         border: 2px solid var(--color-098494)
         transform: translate(calc(93%))
-        z-index: -1 
+        z-index: 2 
     &__views
         max-width: 188px
         border-bottom: 1px solid var(--color-dedede)

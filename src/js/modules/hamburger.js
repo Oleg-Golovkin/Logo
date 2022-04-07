@@ -1,6 +1,6 @@
 const hamburger = () => {
 
-    const hamburger = document.querySelectorAll(".hamburger"),
+    const hamburger = document.querySelectorAll(".hamburger.hamburger--3dx"),
         menu = document.querySelector(".menu"),
         menuBackground = document.querySelector(".menu__background"),
         // Перемещение блоков
