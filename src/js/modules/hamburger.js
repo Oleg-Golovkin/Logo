@@ -1,6 +1,6 @@
 const hamburger = () => {
 
-    const hamburger = document.querySelectorAll(".hamburger.hamburger--3dx"),
+    const hamburger = document.querySelector("#header"),
         menu = document.querySelector(".menu"),
         menuBackground = document.querySelector(".menu__background"),
         // Перемещение блоков
@@ -10,15 +10,11 @@ const hamburger = () => {
         headerSubSecondary = document.querySelectorAll(".header__sub-secondary");
 
     function activeHamburger() {
-        hamburger.forEach(item => {
-            item.classList.add("is-active");
-        });
+        hamburger.classList.add("is-active");
     }
 
     function deactivationHamburger() {
-        hamburger.forEach(item => {
-            item.classList.remove("is-active");
-        });
+        hamburger.classList.remove("is-active");
     }
 
     function activeReplacement() {
@@ -46,18 +42,18 @@ const hamburger = () => {
 
     function hideMenu() {
         deactivationHamburger();
-        setTimeout(()=> deactivationReplacement(), 400);
+        setTimeout(() => deactivationReplacement(), 400);
         menu.style.left = "-200px";
         menuBackground.style.visibility = "hidden";
         menuBackground.style.opacity = "0";
     }
 
-    hamburger.forEach(item => {
-        item.addEventListener("click", (e) => {
-            console.log('fsdf');
-            showMenu();
-        });
+
+    hamburger.addEventListener("click", (e) => {
+        console.log('fsdf');
+        showMenu();
     });
+
 
 
     menuBackground.addEventListener("click", (e) => {
@@ -65,11 +61,11 @@ const hamburger = () => {
     });
 
 
-    hamburger.forEach(item => {
-        item.addEventListener("click", (e) => {
-            showMenu();
-        });
+
+    hamburger.addEventListener("click", (e) => {
+        showMenu();
     });
+
 };
 
 export default hamburger;

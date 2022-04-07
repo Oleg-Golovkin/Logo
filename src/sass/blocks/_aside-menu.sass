@@ -4,7 +4,6 @@
     max-height: 703px
     position: relative
     top: 174px 
-    // overflow: hidden
 .main
     display: flex
     justify-content: space-between
@@ -25,6 +24,7 @@
     max-width: 261px
     max-height: 703px
     padding: 9px 0px 0px 0px
+    z-index: 3
     &__title
         font-family: UniSansCaps
         font-size: rem(30)
@@ -79,13 +79,11 @@
             bottom: 0
             top: 14px
             background: url(../icons/strelka_4684.png) right no-repeat
-    &__wrapper
-        width: calc(200% + 20px)        
     &__drawing
-        transition: 1s all
+        transition: 0.5s all
         position: absolute
+        width: 0
         top: 0
-        width: 281px
         max-height: 703px
         background-color: var(--color-ffffff)
         border: 2px solid var(--color-098494)
