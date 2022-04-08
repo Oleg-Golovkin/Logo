@@ -1,6 +1,5 @@
 .hamburger {
   display: none;
-  padding: 19px 14px;
   position: absolute;
   cursor: pointer;
   transition-property: opacity, filter;
@@ -14,12 +13,14 @@
   margin: 0;
   overflow: visible;
   opacity: 0.7;
+
 }
+
 
 .hamburger--3dx__aside-menu {
   display: inline-block;
   right: 0;
-  top: 0px;
+  top: 31px;
   right: 21px;
   margin-top: 0;
 }
@@ -39,10 +40,17 @@
 }
 
 .hamburger-box {
-  width: 40px;
-  height: 24px;
-  display: inline-block;
+  width: 35px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+
+}
+
+.hamburger-box_background {
+  background-color: var(--color-068292);
 }
 
 .hamburger-inner {
@@ -54,7 +62,7 @@
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-  width: 40px;
+  width: 24px;
   height: 4px;
   background-color: white;
   border-radius: 4px;

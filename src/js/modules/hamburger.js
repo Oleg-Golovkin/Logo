@@ -10,7 +10,7 @@ const hamburger = () => {
         headerSubSecondary = document.querySelectorAll(".header__sub-secondary");
 
     function activeHamburger() {
-        hamburger.classList.add("is-active");
+        hamburger.classList.add("is-active");        
     }
 
     function deactivationHamburger() {
@@ -54,13 +54,9 @@ const hamburger = () => {
         showMenu();
     });
 
-
-
     menuBackground.addEventListener("click", (e) => {
         hideMenu();
     });
-
-
 
     hamburger.addEventListener("click", (e) => {
         showMenu();

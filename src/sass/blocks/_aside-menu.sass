@@ -3,7 +3,7 @@
     width: 261px
     max-height: 703px
     position: relative
-    top: 174px 
+    top: 174px
 .main
     display: flex
     justify-content: space-between
@@ -14,17 +14,20 @@
     background-color: black
     z-index: 1
 
-    
-
 .aside-menu
     display: flex
     position: relative
+    overflow: hidden
     flex-direction: column
     background: url(../img/bg/aside-menu.jpg) no-repeat center center/cover
     max-width: 261px
-    max-height: 703px
+    max-height: 100px
     padding: 9px 0px 0px 0px
     z-index: 3
+    transition: 0.5s All
+    &_activation
+        max-height: 703px
+
     &__title
         font-family: UniSansCaps
         font-size: rem(30)
@@ -80,6 +83,7 @@
             top: 14px
             background: url(../icons/strelka_4684.png) right no-repeat
     &__drawing
+        display: none
         transition: 0.5s all
         position: absolute
         width: 0
@@ -88,7 +92,7 @@
         background-color: var(--color-ffffff)
         border: 2px solid var(--color-098494)
         transform: translate(calc(93%))
-        z-index: 2 
+        z-index: 2
     &__views
         max-width: 188px
         border-bottom: 1px solid var(--color-dedede)
