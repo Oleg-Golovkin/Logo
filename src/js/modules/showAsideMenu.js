@@ -51,10 +51,13 @@ const showAsideMenu = () => {
     window.addEventListener("click", (e) => {
         asideMenuDrawings.forEach((item, i) => {
             // Скрываю все выезжающие меню, присваивая им ширину 0px
+
             item.style.width = widthAsideMenuDrawing;
             setTimeout(() => {
                 item.style.display = "none";
             }, 100);
+
+
             // К каждой ссылке присвоил дата атрибут (не все должны вызывать выезжающее
             //     меню)
             if ((e.target.getAttribute('data-arrow') ||
@@ -72,13 +75,14 @@ const showAsideMenu = () => {
                 }
             }
             // при нажатии на свободное пространство все закрывается
-            if (!e.target.matches('.aside-menu__link_main_view') &&
-                !e.target.parentNode.matches('.aside-menu__link_main_view')) {
+            if (!e.target.matches('.aside-menu__link') &&
+                !e.target.parentNode.matches('.aside-menu__link')) {
                 disactiveClassView();
                 item.style.width = widthAsideMenuDrawing;
                 setTimeout(() => {
                     item.style.display = "none";
                 }, 100);
+                console.log("dasd");
             }
         });
     });

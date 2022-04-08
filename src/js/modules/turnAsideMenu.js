@@ -2,7 +2,7 @@ const turnAsideMenu = () => {
 
     const hamburger = document.querySelector("#aside"),
         menu = document.querySelector(".aside-menu")
-        // asideMenuLink = document.querySelectorAll('.aside-menu__link');
+    // asideMenuLink = document.querySelectorAll('.aside-menu__link');
 
     // function disactiveClassView() {
     //     asideMenuLink.forEach(item => {
@@ -33,19 +33,18 @@ const turnAsideMenu = () => {
         if ((e.target && e.target.closest('#aside')) &&
             menu.matches('.aside-menu_activation')) {
             hideMenu();
-            // disactiveClassView();
         } else if ((e.target && e.target.closest('#aside')) &&
             !menu.matches('.aside-menu_activation')) {
             showMenu();
         }
 
-        if (!(e.target && e.target.closest('#aside')) &&
-            !(e.target && e.target.closest('.aside-menu'))) {
+        if (!e.target.closest('#aside') &&
+            !e.target.closest('.aside-menu') &&
+            !e.target.matches('.aside-menu__link') &&
+            !e.target.parentNode.matches('.aside-menu__link')) {
             hideMenu();
-            // disactiveClassView();
         }
     });
-
 };
 
 export default turnAsideMenu;
