@@ -9,9 +9,13 @@ const hamburger = () => {
         headerSecondary = document.querySelector(".header__secondary"),
         headerSubSecondary = document.querySelectorAll(".header__sub-secondary");
 
-    function activeHamburger() {
-        hamburger.classList.add("is-active");        
+    function disactiveClassView() {
+        asideMenuLink.forEach(item => {
+            item.classList.remove("aside-menu__link_main_view");
+        });
     }
+
+    
 
     function deactivationHamburger() {
         hamburger.classList.remove("is-active");
@@ -45,11 +49,10 @@ const hamburger = () => {
         setTimeout(() => deactivationReplacement(), 400);
         menu.style.left = "-200px";
         menuBackground.style.visibility = "hidden";
-        menuBackground.style.opacity = "0";
+        menuBackground.style.opacity = "0";        
     }
-    
+
     hamburger.addEventListener("click", (e) => {
-        console.log('fsdf');
         showMenu();
     });
 

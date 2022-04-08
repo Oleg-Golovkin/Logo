@@ -6,7 +6,10 @@ const showAsideMenu = () => {
         // Меню равной ширины, поэтому достаточно получить ширину одного из них
         asideMenuDrawing = document.querySelector('.aside-menu__drawing'),
         // Получаю ширину одного из них. По умолчанию в css ширина их 0px
+        asideMenuLinkSpecial = document.querySelectorAll('[data-arrow]'),
         asideMenuLink = document.querySelectorAll('.aside-menu__link_main'),
+        asideMenuLinks = document.querySelector('.aside-menu__links'),
+
         widthAsideMenuDrawing = getComputedStyle(asideMenuDrawing).width;
 
 
@@ -24,6 +27,25 @@ const showAsideMenu = () => {
         });
     }
 
+    // 1. Подсвечивание фона на нажимаемых элементах меню и
+    // убирание фона при повторном нажатии на сам элемент, или последующем
+    // нажитии на другой элемент меню
+    asideMenuLinks.addEventListener("click", (e) => {
+        asideMenuLink.forEach((item, i) => {
+            if (e.target == item || e.target.parentNode == item) {
+                if (!e.target.matches('.aside-menu__link_main_view') &&
+                    !e.target.parentNode.matches('.aside-menu__link_main_view')) {
+                    disactiveClassView();
+                    item.classList.add("aside-menu__link_main_view");
+                } else {
+                    disactiveClassView();
+                }
+            }
+        });
+
+    });
+
+    // Скрытие и подказ подменю.
     // Событие на window, чтобы иметь возможность закрывать ссылки при 
     // нажатии на свободное пространство
     window.addEventListener("click", (e) => {
@@ -33,13 +55,10 @@ const showAsideMenu = () => {
             setTimeout(() => {
                 item.style.display = "none";
             }, 100);
-            disactiveClassView();
             // К каждой ссылке присвоил дата атрибут (не все должны вызывать выезжающее
             //     меню)
             if ((e.target.getAttribute('data-arrow') ||
                     e.target.parentNode.getAttribute('data-arrow')) == i) {
-                // console.log(e.target);
-                e.target.classList.add("aside-menu__link_main_view");
                 // Если у выезжающего меню ширина 0px, то присваиваю
                 // к нему ширину для выезда - 281px
                 // setTimeout - чтобы дать возможность активному меню скрыться. 
@@ -51,14 +70,15 @@ const showAsideMenu = () => {
                         item.style.width = "281px";
                     }, 300);
                 }
-                // при нажатии на свободное пространство все закрывается
-                if (!(e.target.getAttribute('data-arrow') ||
-                        e.target.parentNode.getAttribute('data-arrow'))) {
-                    item.style.width = widthAsideMenuDrawing;
-                    setTimeout(() => {
-                        item.style.display = "none";
-                    }, 100);
-                }
+            }
+            // при нажатии на свободное пространство все закрывается
+            if (!e.target.matches('.aside-menu__link_main_view') &&
+                !e.target.parentNode.matches('.aside-menu__link_main_view')) {
+                disactiveClassView();
+                item.style.width = widthAsideMenuDrawing;
+                setTimeout(() => {
+                    item.style.display = "none";
+                }, 100);
             }
         });
     });
