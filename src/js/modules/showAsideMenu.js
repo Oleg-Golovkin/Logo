@@ -33,7 +33,7 @@ const showAsideMenu = () => {
                         // setTimeout - чтобы дать возможность активному меню скрыться. 
                 if (getComputedStyle(item).width == widthAsideMenuDrawing) {
                     setTimeout(() => {
-                        item.style.width = "281px";
+                        item.style.width = "281px"; 
                     }, 300);
                 }
             }
