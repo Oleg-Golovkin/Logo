@@ -1,6 +1,4 @@
 
-
-
 .aside-menu
     display: flex
     position: relative
@@ -39,7 +37,12 @@
         border-bottom: 1px solid var(--color-1aa7b9)
         &:active
             background: var(--color-098494)
+        &_view
+            border-bottom: none
 
+        &_main
+            &_view
+                background: var(--color-098494)
         a
             position: relative
             text-decoration: none
@@ -49,11 +52,9 @@
             font-weight: 300
             letter-spacing: 0.025em
             color: #ffffff
+            background: none
             left: 21px
-        &_view
-            border-bottom: none
-            &:active
-                background: var(--color-71c7d3)
+
             a
                 color: var(--color-1ab9ce)
                 text-decoration: none
@@ -80,6 +81,14 @@
         border: 2px solid var(--color-098494)
         transform: translate(calc(93%))
         z-index: 2
+        a
+            font-family: Roboto
+            font-size: 12px
+            line-height: 36px
+            font-weight: 300
+            letter-spacing: 0.025em
+            color: #1ab9ce
+
     &__views
         max-width: 188px
         border-bottom: 1px solid var(--color-dedede)

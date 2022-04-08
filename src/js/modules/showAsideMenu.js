@@ -6,6 +6,7 @@ const showAsideMenu = () => {
         // Меню равной ширины, поэтому достаточно получить ширину одного из них
         asideMenuDrawing = document.querySelector('.aside-menu__drawing'),
         // Получаю ширину одного из них. По умолчанию в css ширина их 0px
+        asideMenuLink = document.querySelectorAll('.aside-menu__link_main'),
         widthAsideMenuDrawing = getComputedStyle(asideMenuDrawing).width;
 
 
@@ -17,6 +18,11 @@ const showAsideMenu = () => {
     // меню.
     // 3. При нажии на любую другу ссылку (не активирующее меню) выехавшее меню сворачивается
 
+    function disactiveClassView() {
+        asideMenuLink.forEach(item => {
+            item.classList.remove("aside-menu__link_main_view");
+        });
+    }
 
     // Событие на window, чтобы иметь возможность закрывать ссылки при 
     // нажатии на свободное пространство
@@ -27,11 +33,13 @@ const showAsideMenu = () => {
             setTimeout(() => {
                 item.style.display = "none";
             }, 100);
+            disactiveClassView();
             // К каждой ссылке присвоил дата атрибут (не все должны вызывать выезжающее
             //     меню)
             if ((e.target.getAttribute('data-arrow') ||
                     e.target.parentNode.getAttribute('data-arrow')) == i) {
-                e.target.classList.add("")
+                // console.log(e.target);
+                e.target.classList.add("aside-menu__link_main_view");
                 // Если у выезжающего меню ширина 0px, то присваиваю
                 // к нему ширину для выезда - 281px
                 // setTimeout - чтобы дать возможность активному меню скрыться. 
