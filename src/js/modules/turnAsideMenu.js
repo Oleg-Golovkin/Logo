@@ -24,19 +24,18 @@ const turnAsideMenu = () => {
     }
     window.addEventListener("click", (e) => {
         if ((e.target && e.target.closest('#aside')) &&
-        menu.matches('.aside-menu_activation')) {
-            hideMenu();  
-        } 
-        if ((e.target && e.target.closest('#aside')) &&
-        !menu.matches('.aside-menu_activation')) {
-            showMenu(); 
-        }       
+            menu.matches('.aside-menu_activation')) {
+            hideMenu();
+        } else if ((e.target && e.target.closest('#aside')) &&
+            !menu.matches('.aside-menu_activation')) {
+            showMenu();
+        }
 
         if (!(e.target && e.target.closest('#aside')) &&
-        !(e.target && e.target.closest('.aside-menu'))) {
+            !(e.target && e.target.closest('.aside-menu'))) {
             hideMenu();
         }
-        
+
     });
 
 };

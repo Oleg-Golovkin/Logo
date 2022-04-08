@@ -47,8 +47,7 @@ const hamburger = () => {
         menuBackground.style.visibility = "hidden";
         menuBackground.style.opacity = "0";
     }
-
-
+    
     hamburger.addEventListener("click", (e) => {
         console.log('fsdf');
         showMenu();

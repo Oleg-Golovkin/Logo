@@ -31,6 +31,7 @@ const showAsideMenu = () => {
             //     меню)
             if ((e.target.getAttribute('data-arrow') ||
                     e.target.parentNode.getAttribute('data-arrow')) == i) {
+                e.target.classList.add("")
                 // Если у выезжающего меню ширина 0px, то присваиваю
                 // к нему ширину для выезда - 281px
                 // setTimeout - чтобы дать возможность активному меню скрыться. 
