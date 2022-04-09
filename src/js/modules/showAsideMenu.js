@@ -4,14 +4,10 @@ const showAsideMenu = () => {
     // Меню, которые выезжают
     const asideMenuDrawings = document.querySelectorAll('.aside-menu__drawing'),
         // Меню равной ширины, поэтому достаточно получить ширину одного из них
-        asideMenuDrawing = document.querySelector('.aside-menu__drawing'),
-        // Получаю ширину одного из них. По умолчанию в css ширина их 0px
-        asideMenuLinkSpecial = document.querySelectorAll('[data-arrow]'),
+         // Получаю ширину одного из них. По умолчанию в css ширина их 0px     
+        widthAsideMenuDrawing = getComputedStyle(document.querySelector('.aside-menu__drawing')).width,
         asideMenuLink = document.querySelectorAll('.aside-menu__link_main'),
-        asideMenuLinks = document.querySelector('.aside-menu__links'),
-
-        widthAsideMenuDrawing = getComputedStyle(asideMenuDrawing).width;
-
+        asideMenuLinks = document.querySelector('.aside-menu__links');
 
     // Функции выезда меню:
     // 1. При нажатии на активированную ссылку (меню выехало) - выехавшее 
@@ -31,7 +27,7 @@ const showAsideMenu = () => {
     // убирание фона при повторном нажатии на сам элемент, или последующем
     // нажитии на другой элемент меню
     asideMenuLinks.addEventListener("click", (e) => {
-        asideMenuLink.forEach((item, i) => {
+        asideMenuLink.forEach((item) => {
             if (e.target == item || e.target.parentNode == item) {
                 if (!e.target.matches('.aside-menu__link_main_view') &&
                     !e.target.parentNode.matches('.aside-menu__link_main_view')) {
@@ -42,7 +38,6 @@ const showAsideMenu = () => {
                 }
             }
         });
-
     });
 
     // Скрытие и подказ подменю.
@@ -51,13 +46,10 @@ const showAsideMenu = () => {
     window.addEventListener("click", (e) => {
         asideMenuDrawings.forEach((item, i) => {
             // Скрываю все выезжающие меню, присваивая им ширину 0px
-
             item.style.width = widthAsideMenuDrawing;
             setTimeout(() => {
                 item.style.display = "none";
             }, 100);
-
-
             // К каждой ссылке присвоил дата атрибут (не все должны вызывать выезжающее
             //     меню)
             if ((e.target.getAttribute('data-arrow') ||
@@ -82,7 +74,6 @@ const showAsideMenu = () => {
                 setTimeout(() => {
                     item.style.display = "none";
                 }, 100);
-                console.log("dasd");
             }
         });
     });

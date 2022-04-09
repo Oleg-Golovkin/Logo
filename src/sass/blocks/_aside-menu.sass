@@ -30,14 +30,14 @@
         width: 100%
         list-style: none
         padding: 23px 0 0 0
-        &_view
-            border-bottom: 1px solid var(--color-098494)
+        &_drawing
+            border-bottom: 1px solid var(--color-dedede)
     &__link
         position: relative
         border-bottom: 1px solid var(--color-1aa7b9)
-        &:hover  
+        &:hover
             background: var(--color-098494)
-        &_view
+        &_drawing
             border-bottom: none
 
         &_main
@@ -71,10 +71,12 @@
             top: 14px
             background: url(../icons/strelka_4684.png) right no-repeat
     &__drawing
-        display: none
+        // display: none
+        display: block
         transition: 0.5s all
         position: absolute
-        width: 0
+        // width: 0
+        width: 281px
         top: 0
         max-height: 703px
         background-color: var(--color-ffffff)

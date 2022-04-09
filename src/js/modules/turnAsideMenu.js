@@ -1,14 +1,7 @@
 const turnAsideMenu = () => {
 
     const hamburger = document.querySelector("#aside"),
-        menu = document.querySelector(".aside-menu")
-    // asideMenuLink = document.querySelectorAll('.aside-menu__link');
-
-    // function disactiveClassView() {
-    //     asideMenuLink.forEach(item => {
-    //         item.classList.remove("aside-menu__link_main_view");
-    //     });
-    // }
+        menu = document.querySelector(".aside-menu");  
 
     function activeHamburger() {
         hamburger.classList.add("is-active");

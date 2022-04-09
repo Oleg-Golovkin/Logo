@@ -7,6 +7,6 @@ import turnAsideMenu from "./modules/turnAsideMenu";
 document.addEventListener("DOMContentLoaded", () => {
     /* После полной загрузки HTML выполняется JS */
     hamburger(); 
-    showAsideMenu();  
+    // showAsideMenu();  
     turnAsideMenu();
 });
