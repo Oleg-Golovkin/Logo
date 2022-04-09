@@ -1,11 +1,13 @@
 .product
     &_aside-menu
-        padding: 11px 30px 0 26px
+        padding: 11px 30px 197px 26px
     &__stock
+        display: flex
+        justify-content: center
+        align-items: center
         width: 105px
         height: 21px
         background-color: var(--color-fd8424)
-        padding: 0px 0px 0px 11px
         border-radius: 20px
         font-family: Roboto
         font-size: 0.87rem
@@ -13,16 +15,44 @@
         font-weight: 900
         text-transform: uppercase
         color: var(--color-ffffff)
+        margin-top: 11px
 
-//     &__image
+    &__image
+        margin-top: 16px
+        width: 225px
+        height: 147px
+        a
+            display: block
+            width: 100%
+            height: 100%
+            background: url('../img/aside-menu/kartinka_4966.jpg')
 
-//     &__title
+    &__title
+        font-family: Roboto
+        font-size: 1rem
+        font-weight: 300
+        color: #36949f
+        &_aside-menu
+            line-height: 1.5em
+            margin-top: 11px
+            margin-left: 11px
 
+    &__wrapper
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-top: 31px
+        width: 100%
+        max-height: 40px
+    &__price
+        font-family: Roboto
+        font-size: 1.5rem
+        line-height: 1em
+        font-weight: 900
+        color: var(--color-333333)
+        &_aside-menu
+            margin-left: 2px    
 //     &__old-price
-
-//     &__wrapper
-
-//     &__price
 
 // .header
 //     &__sub-secondary-img
