@@ -15,23 +15,22 @@
 .header
     position: fixed
     width: 100%
-    z-index: 3
+    z-index: 10
+    background-image: url("../img/bg/header.png")
+    background-color: var(--color-ffffff)
+    background-position: center center
+    background-size: cover
+    background-repeat: no-repeat
+    height: 140px
+    @media ( max-width:  767px)
+        background-position: right
     &__main
         display: flex
         flex-wrap: wrap
         justify-content: space-between
         width: 100%
         padding-top: 14px
-    &__bg
-        background-image: url("../img/bg/header.png")
-        background-color: var(--color-ffffff)
-        background-position: center center
-        background-size: cover
-        background-repeat: no-repeat
-        width: 100%
-        height: 140px
-        @media ( max-width:  767px)
-            background-position: right
+   
 
     &__content-ul
         display: grid
@@ -150,15 +149,18 @@
         display: flex
         justify-content: space-between
         flex-wrap: wrap
-        margin-top: 20px
+        margin-top: 6px
+        
         @media ( max-width: 992px )
             display: none
 
     &__sub-secondary
         display: flex
         justify-content: space-between
+        align-items: center
         flex-wrap: wrap
         width: 450px
+        
         @media ( max-width: 1200px )
             width: 370px
         @media ( max-width: 812px )
@@ -170,7 +172,7 @@
         align-items: center
         a
             text-decoration: none
-            border-bottom: 1px dashed        
+            border-bottom: 1px dashed
     &__sub-secondary-dsc
         font-size: 14px
         line-height: 18px

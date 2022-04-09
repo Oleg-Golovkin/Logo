@@ -1,12 +1,12 @@
 "use strict";
-import hamburger from "./modules/hamburger";
+import showHeaderMenu from "./modules/showHeaderMenu";
 import showAsideMenu from "./modules/showAsideMenu";
 import turnAsideMenu from "./modules/turnAsideMenu";
 
 
 document.addEventListener("DOMContentLoaded", () => {
     /* После полной загрузки HTML выполняется JS */
-    hamburger(); 
+    showHeaderMenu(); 
     showAsideMenu();  
     turnAsideMenu();
 });

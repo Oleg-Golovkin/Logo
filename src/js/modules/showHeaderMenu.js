@@ -1,4 +1,4 @@
-const hamburger = () => {
+const showHeaderMenu = () => {
 
     const hamburger = document.querySelector("#header"),
         menu = document.querySelector(".menu"),
@@ -43,7 +43,7 @@ const hamburger = () => {
 
     function hideMenu() {
         deactivationHamburger();
-        setTimeout(() => deactivationReplacement(), 400);
+        setTimeout(() => deactivationReplacement(), 900);
         menu.style.left = "-200px";
         menuBackground.style.visibility = "hidden";
         menuBackground.style.opacity = "0";
@@ -58,4 +58,4 @@ const hamburger = () => {
     });   
 };
 
-export default hamburger;
+export default showHeaderMenu;
