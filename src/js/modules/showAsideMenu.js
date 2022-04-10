@@ -2,12 +2,12 @@
 
 const showAsideMenu = () => {
     // Меню, которые выезжают
-    const asideMenuDrawings = document.querySelectorAll('.aside-menu__drawing'),
+    const asideMenuDrawings = document.querySelectorAll('.aside__menu-drawing'),
         // Меню равной ширины, поэтому достаточно получить ширину одного из них
          // Получаю ширину одного из них. По умолчанию в css ширина их 0px     
-        widthAsideMenuDrawing = getComputedStyle(document.querySelector('.aside-menu__drawing')).width,
-        asideMenuLink = document.querySelectorAll('.aside-menu__link_main'),
-        asideMenuLinks = document.querySelector('.aside-menu__links');
+        widthAsideMenuDrawing = getComputedStyle(document.querySelector('.aside__menu-drawing')).width,
+        asideMenuLink = document.querySelectorAll('.aside__menu-link_main'),
+        asideMenuLinks = document.querySelector('.aside__menu-links');
 
     // Функции выезда меню:
     // 1. При нажатии на активированную ссылку (меню выехало) - выехавшее 
@@ -19,7 +19,7 @@ const showAsideMenu = () => {
 
     function disactiveClassView() {
         asideMenuLink.forEach(item => {
-            item.classList.remove("aside-menu__link_main_view");
+            item.classList.remove("aside__menu-link_main-view");
         });
     }
 
@@ -29,10 +29,10 @@ const showAsideMenu = () => {
     asideMenuLinks.addEventListener("click", (e) => {
         asideMenuLink.forEach((item) => {
             if (e.target == item || e.target.parentNode == item) {
-                if (!e.target.matches('.aside-menu__link_main_view') &&
-                    !e.target.parentNode.matches('.aside-menu__link_main_view')) {
+                if (!e.target.matches('.aside__menu-link_main-view') &&
+                    !e.target.parentNode.matches('.aside__menu-link_main-view')) {
                     disactiveClassView();
-                    item.classList.add("aside-menu__link_main_view");
+                    item.classList.add("aside__menu-link_main-view");
                 } else {
                     disactiveClassView();
                 }
@@ -67,8 +67,8 @@ const showAsideMenu = () => {
                 }
             }
             // при нажатии на свободное пространство все закрывается
-            if (!e.target.matches('.aside-menu__link') &&
-                !e.target.parentNode.matches('.aside-menu__link')) {
+            if (!e.target.matches('.aside__menu-link') &&
+                !e.target.parentNode.matches('.aside__menu-link')) {
                 disactiveClassView();
                 item.style.width = widthAsideMenuDrawing;
                 setTimeout(() => {

@@ -1,7 +1,7 @@
 const turnAsideMenu = () => {
 
     const hamburger = document.querySelector("#aside"),
-        menu = document.querySelector(".aside-menu");  
+        menu = document.querySelector(".aside__menu");  
 
     function activeHamburger() {
         hamburger.classList.add("is-active");
@@ -15,26 +15,26 @@ const turnAsideMenu = () => {
 
     function showMenu() {
         activeHamburger();
-        menu.classList.add("aside-menu_activation");
+        menu.classList.add("aside__menu-activation");
     }
 
     function hideMenu() {
         deactivationHamburger();
-        menu.classList.remove("aside-menu_activation");
+        menu.classList.remove("aside__menu-activation");
     }
     window.addEventListener("click", (e) => {
         if ((e.target && e.target.closest('#aside')) &&
-            menu.matches('.aside-menu_activation')) {
+            menu.matches('.aside__menu-activation')) {
             hideMenu();
         } else if ((e.target && e.target.closest('#aside')) &&
-            !menu.matches('.aside-menu_activation')) {
+            !menu.matches('.aside__menu-activation')) {
             showMenu();
         }
 
         if (!e.target.closest('#aside') &&
             !e.target.closest('.aside-menu') &&
-            !e.target.matches('.aside-menu__link') &&
-            !e.target.parentNode.matches('.aside-menu__link')) {
+            !e.target.matches('.aside__menu-link') &&
+            !e.target.parentNode.matches('.aside__menu-link')) {
             hideMenu();
         }
     });

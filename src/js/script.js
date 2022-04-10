@@ -2,6 +2,7 @@
 import showHeaderMenu from "./modules/showHeaderMenu";
 import showAsideMenu from "./modules/showAsideMenu";
 import turnAsideMenu from "./modules/turnAsideMenu";
+import sliderСompanies from "./modules/sliderСompanies";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,4 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
     showHeaderMenu(); 
     showAsideMenu();  
     turnAsideMenu();
+    sliderСompanies();
 });
