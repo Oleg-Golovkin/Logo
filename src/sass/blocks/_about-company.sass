@@ -1,9 +1,15 @@
 .about-company
     margin: 32px 0 0 0
+    @media   ( max-width: 992px )
+        margin: 0
+        display: none
     &__wrapper
         width: 100%
         background-color: var(--color-009fb4)
         padding: 2.8125em 3.5625em 3.8125em 2.3125em
+        @media   ( max-width: 1200px )
+            font-size: 6px
+       
 
     &__title
         font-family: 'UniSansCaps'
@@ -29,6 +35,8 @@
         font-weight: 400
         letter-spacing: 0.025em
         color: var(--color-ffffff)
+        @media   ( max-width: 1200px )
+            max-width: 39em
 
         p
             margin: 0 0 0 0
@@ -43,6 +51,8 @@
         font-weight: 400
         letter-spacing: 0.025em
         color: var(--color-ffffff)
+        @media   ( max-width: 1200px )
+            max-width: 39em
 
     &__concept-title
         font-size: 0.75rem
