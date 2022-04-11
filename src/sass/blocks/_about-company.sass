@@ -1,0 +1,67 @@
+.about-company
+    margin: 32px 0 0 0
+    &__wrapper
+        width: 100%
+        background-color: var(--color-009fb4)
+        padding: 2.8125em 3.5625em 3.8125em 2.3125em
+
+    &__title
+        font-family: 'UniSansCaps'
+        font-size: 1.875rem
+        line-height: 1.2em
+        font-weight: 900
+        font-style: normal
+        text-transform: uppercase
+        letter-spacing: 0.025em
+        color: var(--color-22b7ca)
+
+    &__dcs
+        display: flex
+        justify-content: space-between
+        padding: 2.0625em 0 0 0
+        opacity: 0.9
+
+    &__story
+        max-width: 42.25em
+        font-family: Roboto
+        font-size: 0.75rem
+        line-height: 1.6666em
+        font-weight: 400
+        letter-spacing: 0.025em
+        color: var(--color-ffffff)
+
+        p
+            margin: 0 0 0 0
+            &:last-child
+                margin: 2.5em 0 0 0
+
+    &__concept
+        max-width: 39.8333333em
+        font-family: Roboto
+        font-size: 0.75rem
+        line-height: 1.6666em
+        font-weight: 400
+        letter-spacing: 0.025em
+        color: var(--color-ffffff)
+
+    &__concept-title
+        font-size: 0.75rem
+        text-transform: uppercase
+        font-weight: 900
+        line-height: 1.6666em
+    &__concept-dcs
+        position: relative
+        p
+            margin: 0 0 0 0
+            &:last-child
+                position: relative
+                width: 70%
+        &::after
+            content: ""
+            position: absolute
+            bottom: -202px
+            right: -32px
+            display: block
+            width: 255px
+            height: 325px
+            background: url("../img/layers.png") center center no-repeat
