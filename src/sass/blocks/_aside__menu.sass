@@ -1,93 +1,99 @@
-
-.aside__menu
-    display: flex
+.aside
+    width: 23%
     position: relative
-    overflow: hidden
-    flex-direction: column
-    background: url(../img/bg/aside-menu.jpg) no-repeat center center/cover
-    max-width: 100%
-    max-height: 90px
-    padding: 9px 0px 0px 0px
-    z-index: 3
-    transition: 0.5s All
-    &-activation
-        max-height: 703px
-
-    &-title
-        font-family: UniSansCaps
-        font-size: rem(30)
-        line-height: 1.2
-        font-weight: 900
-        text-transform: uppercase
-        letter-spacing: 0.025em
-        color: var(--color-ffffff)
-        max-width: 137px
-        max-height: 58px
-        left: 0.7em
-        position: relative
-
-    &-links
+    @media   ( max-width: 1200px )
         width: 100%
-        list-style: none
-        padding: 23px 0 0 0
-        &_drawing
-            border-bottom: 1px solid var(--color-dedede)
-            padding-bottom: 23px
-            margin-bottom: 0px
-    &-link
+    &__menu
+        display: flex
         position: relative
-        border-bottom: 1px solid var(--color-1aa7b9)
-        &:hover
-            background: var(--color-098494)
-        &_drawing
-            border-bottom: none
-        &_main
-            &-view
-                background: var(--color-098494)
-        a
+        overflow: hidden
+        flex-direction: column
+        background: url(../img/bg/aside-menu.jpg) no-repeat center center/cover
+        max-width: 100%
+        max-height: 90px
+        padding: 9px 0px 0px 0px
+        z-index: 3
+        transition: 0.5s All
+       
+
+        &-activation
+            max-height: 703px
+
+        &-title
+            font-family: UniSansCaps
+            font-size: rem(30)
+            line-height: 1.2
+            font-weight: 900
+            text-transform: uppercase
+            letter-spacing: 0.025em
+            color: var(--color-ffffff)
+            max-width: 137px
+            max-height: 58px
+            left: 0.7em
             position: relative
-            text-decoration: none
-            font-family: Roboto
-            font-size: rem(12)
-            line-height: 3.3333em
-            font-weight: 300
-            letter-spacing: 0.025em
-            color: #ffffff
-            background: none
-            left: 21px           
 
-    &-link[data-arrow]
-        &::before
-            content: ""
-            display: inline-block
+        &-links
+            width: 100%
+            list-style: none
+            padding: 23px 0 0 0
+            &_drawing
+                border-bottom: 1px solid var(--color-dedede)
+                padding-bottom: 23px
+                margin-bottom: 0px
+        &-link
+            position: relative
+            border-bottom: 1px solid var(--color-1aa7b9)
+            &:hover
+                background: var(--color-098494)
+            &_drawing
+                border-bottom: none
+            &_main
+                &-view
+                    background: var(--color-098494)
+            a
+                position: relative
+                text-decoration: none
+                font-family: Roboto
+                font-size: rem(12)
+                line-height: 3.3333em
+                font-weight: 300
+                letter-spacing: 0.025em
+                color: #ffffff
+                background: none
+                left: 21px
+
+        &-link[data-arrow]
+            &::before
+                content: ""
+                display: inline-block
+                position: absolute
+                width: 14px
+                height: 14px
+                right: 10px
+                bottom: 0
+                top: 14px
+                background: url(../icons/strelka_4684.png) right no-repeat
+        &-drawing
+            display: none
+            transition: 0.5s all
             position: absolute
-            width: 14px
-            height: 14px
-            right: 10px
-            bottom: 0
-            top: 14px
-            background: url(../icons/strelka_4684.png) right no-repeat
-    &-drawing
-        display: none
-        transition: 0.5s all
-        position: absolute
-        width: 0
-        max-height: 701px
-        top: 0
-        max-height: 703px
-        background-color: var(--color-ffffff)
-        border: 2px solid var(--color-098494)
-        border-left: none
-        transform: translate(calc(93%))
-        z-index: 2
-        a
-            font-family: Roboto
-            font-size: 12px
-            line-height: 36px
-            font-weight: 300
-            letter-spacing: 0.025em
-            color: #1ab9ce
+            width: 0
+            max-height: 701px
+            top: 0
+            max-height: 703px
+            background-color: var(--color-ffffff)
+            border: 2px solid var(--color-098494)
+            border-left: none
+            transform: translate(calc(93%))
+            z-index: 2
+            a
+                font-family: Roboto
+                font-size: 12px
+                line-height: 36px
+                font-weight: 300
+                letter-spacing: 0.025em
+                color: #1ab9ce
 
-    &-views
-        max-width: 188px
-        border-bottom: 1px solid var(--color-dedede)
+        &-views
+            max-width: 188px
+            border-bottom: 1px solid var(--color-dedede)

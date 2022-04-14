@@ -1,7 +1,11 @@
 .content
     top: 20px
     width: 74.25%
-    // &__find
+    @media   ( max-width: 1200px )
+        width: 100%
+    &__find
+        @media   ( max-width: 1200px )
+            margin: 15px 0 0 0 
     &__find-form
         display: flex
         align-items: center
@@ -77,7 +81,7 @@
         font-size: 12px
         line-height: 36px
         font-weight: 300
-        letter-spacing: 0.025em 
+        letter-spacing: 0.025em
         color: var(--color-999999)
         &:hover
-            color: var(--color-f68038) 
+            color: var(--color-f68038)
