@@ -1,5 +1,7 @@
 .footer
     margin: 32px 0 0 0
+    position: relative
+    z-index: -1
     @media   ( max-width: 576px )
         margin: 0
     &__nav
@@ -165,16 +167,19 @@
 
     &__VK
         display: flex
+        align-items: center
         flex: 0 1 50%
-        @media   ( max-width: 767px )
+        @media   ( max-width: 1200px )
             margin: 20px 0 0 0
+        @media   ( max-width: 992px )
             flex-direction: column
 
     &__img-VK
         max-width: 284px
         max-height: 240px
-        &:last-child
-            margin: 15px 0 0 0
+        @media   ( max-width: 992px )
+            &:last-child
+                margin: 15px 0 0 0
 
     &__bottom
         display: flex
