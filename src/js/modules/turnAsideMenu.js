@@ -1,7 +1,9 @@
 const turnAsideMenu = () => {
 
     const hamburger = document.querySelector("#aside"),
-        menu = document.querySelector(".aside__menu");  
+        menu = document.querySelector(".aside__menu"),
+        menuWidth = getComputedStyle(menu).width;
+    let i = 90;
 
     function activeHamburger() {
         hamburger.classList.add("is-active");
@@ -15,12 +17,57 @@ const turnAsideMenu = () => {
 
     function showMenu() {
         activeHamburger();
-        menu.classList.add("aside__menu-activation");
+
+        function animate({
+            timing,
+            draw,
+            duration
+        }) {
+
+            let start = performance.now();
+
+            requestAnimationFrame(function animate(time) {
+                // timeFraction изменяется от 0 до 1
+                let timeFraction = (time - start) / duration;
+                if (timeFraction > 1) timeFraction = 1;
+
+                // вычисление текущего состояния анимации
+                let progress = timing(timeFraction);
+
+                draw(progress); // отрисовать её
+
+                if (timeFraction < 1) {
+                    requestAnimationFrame(animate);
+                }
+
+            });
+        }
+
+        animate({
+            duration: 500,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                menu.style.maxHeight = progress * 701 + 'px'               
+            }
+        });
     }
 
     function hideMenu() {
         deactivationHamburger();
-        menu.classList.remove("aside__menu-activation");
+        // menu.classList.remove("aside__menu-activation");        
+        function myAnimation() {
+            i -= 40;
+            menu.style.maxHeight = `${i}px`;
+            console.log(i);
+            if (i > 90) {
+                requestAnimationFrame(myAnimation);
+
+            }
+        }
+        myAnimation();
+
     }
     window.addEventListener("click", (e) => {
         if ((e.target && e.target.closest('#aside')) &&

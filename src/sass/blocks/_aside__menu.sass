@@ -1,4 +1,6 @@
 .aside
+    z-index: 9
+    position: relative
     width: 23%
     position: relative
     @media   ( max-width: 1200px )
@@ -12,11 +14,9 @@
         max-width: 100%
         max-height: 90px
         padding: 9px 0px 0px 0px
-        z-index: 3
-        transition: 0.5s All
-       
-
+        z-index: 9
         &-activation
+            overflow: visible
             max-height: 703px
 
         &-title
@@ -40,9 +40,8 @@
                 border-bottom: 1px solid var(--color-dedede)
                 padding-bottom: 23px
                 margin-bottom: 0px
+
         &-link
-            position: relative
-            border-bottom: 1px solid var(--color-1aa7b9)
             &:hover
                 background: var(--color-098494)
             &_drawing
@@ -50,7 +49,9 @@
             &_main
                 &-view
                     background: var(--color-098494)
-            a
+                    border-bottom: 1px solid var(--color-1aa7b9)
+            &-a
+                padding: 0 0 0 21px
                 position: relative
                 text-decoration: none
                 font-family: Roboto
@@ -60,39 +61,45 @@
                 letter-spacing: 0.025em
                 color: #ffffff
                 background: none
-                left: 21px
+            &_drawing
+                &-a
+                    font-family: Roboto
+                    font-size: 12px
+                    line-height: 36px
+                    font-weight: 300
+                    letter-spacing: 0.025em
+                    color: #1ab9ce
 
-        &-link[data-arrow]
+        &-link[data-arrow] > a
+            display: block
+            width: 100%
+            position: relative
+            z-index: 5
             &::before
                 content: ""
-                display: inline-block
                 position: absolute
                 width: 14px
                 height: 14px
                 right: 10px
                 bottom: 0
-                top: 14px
+                top: 15px
                 background: url(../icons/strelka_4684.png) right no-repeat
         &-drawing
-            display: none
-            transition: 0.5s all
-            position: absolute
-            width: 0
-            max-height: 701px
             top: 0
+            position: absolute
+            width: 262px
             max-height: 703px
+            transition: 0.5s all
             background-color: var(--color-ffffff)
             border: 2px solid var(--color-098494)
             border-left: none
-            transform: translate(calc(93%))
             z-index: 2
-            a
-                font-family: Roboto
-                font-size: 12px
-                line-height: 36px
-                font-weight: 300
-                letter-spacing: 0.025em
-                color: #1ab9ce
+            transform: translate(calc(100%))
+            opacity: 0
+            visibility: hidden
+            &_active
+                opacity: 1
+                visibility: visible
 
         &-views
             max-width: 188px
