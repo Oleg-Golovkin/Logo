@@ -7,6 +7,32 @@ const showAsideMenu = () => {
         // Получаю ширину одного из них. По умолчанию в css ширина их 0px     
         asideMenuLink = document.querySelectorAll('.aside__menu-link_main'),
         asideMenuLinks = document.querySelector('.aside__menu-links');
+    let classActive;
+    let maxWidth1200px;
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 1200) {
+        classActive = "animate__fadeInDown";
+        maxWidth1200px = true;
+    } else {
+        classActive = "aside__menu-drawing_active";
+        maxWidth1200px = false;
+    }
+
+    function mediaWidth(e) {
+        e.stopPropagation();
+        if (e.target.matchMedia("(max-width: 1200px)").matches) {
+            classActive = "animate__fadeInDown";
+            maxWidth1200px = true;
+        } else if (e.target.matchMedia("(min-width: 1201px)").matches) {
+            e.target.removeEventListener("resize", mediaWidth);
+            classActive = "aside__menu-drawing_active";
+            maxWidth1200px = false;
+        }
+
+    }
+
+    window.addEventListener("resize", (e) => mediaWidth(e));
 
     // Функции выезда меню:
     // 1. При нажатии на активированную ссылку (меню выехало) - выехавшее 
@@ -21,6 +47,7 @@ const showAsideMenu = () => {
             item.classList.remove("aside__menu-link_main-view");
         });
     }
+
 
     // 1. Подсвечивание фона на нажимаемых элементах меню и
     // убирание фона при повторном нажатии на сам элемент, или последующем
@@ -43,18 +70,25 @@ const showAsideMenu = () => {
     // Событие на window, чтобы иметь возможность закрывать ссылки при 
     // нажатии на свободное пространство
     window.addEventListener("click", (e) => {
-        asideMenuDrawings.forEach((item, i) => {           
-            item.classList.remove("aside__menu-drawing_active"); 
+        e.stopPropagation();
+        asideMenuDrawings.forEach((item, i) => {
+            item.classList.remove(classActive);
+            if (maxWidth1200px) {
+                item.style.display = "none";
+            }
             if ((e.target.getAttribute('data-arrow') ||
                     e.target.parentNode.getAttribute('data-arrow')) == i) {
-                console.log(e.target.getAttribute('data-arrow'));                  
-                item.classList.toggle("aside__menu-drawing_active");       
+                item.classList.toggle(classActive);
+                if (maxWidth1200px) {
+                    item.style.display = "block";
+                }
+
             }
             // при нажатии на свободное пространство все закрывается
             if (!e.target.matches('.aside__menu-link') &&
                 !e.target.parentNode.matches('.aside__menu-link')) {
                 disactiveClassView();
-                
+
             }
         });
     });
