@@ -19,6 +19,29 @@ const showAsideMenu = () => {
         maxWidth1200px = false;
     }
 
+    const mQuery = window.matchMedia('(max-width: 1200px)');
+
+    function handleMobilePhoneResize(e) {   
+       // Проверяем, верен ли медиа-запрос
+       if (e.target.matches) {     
+            // Затем выводим в консоль следующее сообщение
+            console.log('Media Query Matched!') ;  
+       } 
+    } 
+    
+    // Настраиваем слушателя событий
+    mQuery.addEventListener("change", (e) => handleMobilePhoneResize(e));
+
+    // mQuery.onchange = (e) => {
+    //     if (e.matches) {
+    //     /* the viewport is 600 pixels wide or less */
+    //     console.log('This is a narrow screen — less than 600px wide.')
+    //   } else {
+    //     /* the viewport is more than 600 pixels wide */
+    //     console.log('This is a wide screen — more than 600px wide.')
+    //   }
+    // }
+
     function mediaWidth(e) {
         e.stopPropagation();
         if (e.target.matchMedia("(max-width: 1200px)").matches) {
