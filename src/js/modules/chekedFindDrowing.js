@@ -7,7 +7,13 @@ const chekedFindDrowing = () => {
         contentFindLink.addEventListener("click", (e) => {
             contentFindLink.classList.toggle("content__find-link_active");
             let contentFindLinkActive = document.querySelectorAll(".content__find-link_active");
-            everywhere.textContent = `Везде ${contentFindLinkActive.length}`;
+            if(contentFindLinkActive.length > 0) {
+                everywhere.textContent = `Везде ${contentFindLinkActive.length}`;
+            } else {
+                everywhere.textContent = `Везде`;
+            }
+            
+            
         });
     });
 };

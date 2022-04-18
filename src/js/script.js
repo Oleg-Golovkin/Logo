@@ -5,6 +5,7 @@ import turnAsideMenu from "./modules/turnAsideMenu";
 import sliderСompanies from "./modules/sliderСompanies";
 import showFindDrawing from "./modules/showFindDrawing";
 import chekedFindDrowing from "./modules/chekedFindDrowing";
+import sliderSale from "./modules/sliderSale";
 
 
 
@@ -16,4 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
     sliderСompanies();
     showFindDrawing();
     chekedFindDrowing();
+    sliderSale();
 });
