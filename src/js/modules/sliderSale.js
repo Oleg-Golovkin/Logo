@@ -14,6 +14,7 @@ const sliderSale = () => {
         
 
     subWrapper.style.width = `${slide.length * 100}% `;
+    
 
     function counterPlusZero(i) {
         if (i < 10) {
