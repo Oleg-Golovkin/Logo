@@ -3,138 +3,109 @@ const sliderSale = () => {
         sliderParent = document.querySelector(".slider-content"),
         slider = document.querySelector(".slider-content__wrapper"),
         subWrapper = document.querySelector(".slider-content__subWrapper"),
-        nextSlide = document.querySelector(".slider-content__next"),
-        prevSlide = document.querySelector(".slider-content__prev"),        
-        total = document.querySelector("#total"),
-        current = document.querySelector("#current"),
         width = window.getComputedStyle(slider).width;
-    let offset = 0,
-        index = 1,
-        liArrey = [];
-        
+    //  Здесь получается строка “560px”
+    // В некоторых случаях ширина изменяется на, например, 559,1px
+    //  и возникает ошибка.
+    // Поэтому в коде ниже превращаем ее в цифру + и округляем
+    //  до целых Math.round 
+    // Только так, поскольку при адаптации размер слайдера меняется
 
+    //1. Обязательные переменные
+    let offset = 0,
+        //  счетчик смещенения +560px Использую для смещения слайдов
+        index = 1,
+        //   счетчик слайдов. Использую в табло.     
+        liArrey = [];
+    // Табы создал через цикл. Все табы загнал в этот массив,
+    // чтобы иметь возможность работать с ними через их индекс
+
+
+    //Обязательный блок. Чтобы ширина слайдера была равна сумме ширин всех его слайдов
     subWrapper.style.width = `${slide.length * 100}% `;
     
 
-    function counterPlusZero(i) {
-        if (i < 10) {
-            current.textContent = `0${i}`;
-            if (slide.length > 9) {
-                total.textContent = `${slide.length}`;
-            } else {
-                total.textContent = `0${slide.length}`;
-            }
-        } else {
-            current.textContent = `${i}`;
-            total.textContent = `${slide.length}`
-        }
-    }
-    counterPlusZero(index);
-
-    function counterPlus(i) {
-        if (i > slide.length) {
-            index = 1;
-            current.textContent = `${index}`;
-        }
-        if (i < 1) {
-            index = slide.length;
-            current.textContent = `0${slide.length}`;
-        }
+    // Подсветка активного таба листания слайда. Подставил везде,
+    // где есть переборы с задействованием активного слайда
+    function liArreyAddOpacity(i) {        
+        liArrey[i].style.cssText = `background: url(../icons/slider-sale/${i + 1}.png) center center/cover no-repeat;`;
+        liArrey[i].textContent = ``;
+        
     }
 
-    nextSlide.addEventListener("click", (e) => {
+    // Все  табы слайдов прозрачные. Подставил везде,
+    // где есть переборы, чтобы охватить все табы
+    function liArreyRemoveOpacity(i) {
+        liArrey[i].style.cssText = `background: url(../icons/slider-sale/${0}.png) center center/cover no-repeat;`;     
+        liArrey[i].textContent = `${i + 1}`;        
+    }
 
-        // Переключение слайдов
-        offset += Math.round(+width.replace(/[^0-9,.]/g, ""));
-
-        if (offset > (Math.round(+width.replace(/[^0-9,.]/g, "")) *
-                slide.length - 1)) {
-            offset = 0;
-        };
-        subWrapper.style.transform = `translateX(-${offset}px)`;
-
-        // Переключение счетчика слайдов
-        index++;
-        counterPlus(index);
-        // Формат счетчика 01 или 11
-        counterPlusZero(index);
-
-        liArrey.forEach(li => li.style.opacity = "0.5");
-        liArrey[index - 1].style.opacity = "1";
-
-
-    });
-
-    prevSlide.addEventListener("click", (e) => {
-        // Переключение слайдов
-        offset -= Math.round(+width.replace(/[^0-9,.]/g, ""));
-        if (offset < 0) {
-            offset = Math.round(+width.replace(/[^0-9,.]/g, "")) *
-                (slide.length - 1);
-        };
-        subWrapper.style.transform = `translateX(-${offset}px)`;
-        // Переключение счетчика слайдов
-        index--;
-        counterPlus(index);
-        // Формат счетчика 01 или 11
-        counterPlusZero(index);
-    });
-
-
-    //5. Все, что ниже - это относится к создаюнию табов, нажатию на них и показу //соответствующего слайда, синхронизации счетчика слайдов и переменению слайдов не //через нажатия на соответствующие кнопки, а нажатию на таб. 
+    
+    //4. Все, что ниже - это относится к создаюнию табов, нажатию на них и показу //соответствующего слайда, синхронизации счетчика слайдов и переменению слайдов не //через нажатия на соответствующие кнопки, а нажатию на таб. 
     //Загорание табов прописал в событии движений слайдов выше.
 
-    //    5.1. Создаю список
+    // Создание индикаторов перелистывания
+    // Создание ol
+    //    4.1. Создаю список
     const ol = document.createElement("ol");
-    //    5.2. Присваиваю в нему класс
-    ol.classList.add("carousel-indicators");
-    //    5.3. Посмещаю в нужное место
     sliderParent.append(ol);
-
-    //    5.3. Элементы списка создаю через цикл, заканчивающийся
+    ol.classList.add("slider-content__dots");
+    // Создание li
+    //   4.2. Элементы списка создаю через цикл, заканчивающийся
     //    тогда, когда закончатся слайды i < slide.length. Это удобно, поскольку
     //   верстка эластична – в зависимости от количества слайдов.
     for (let i = 0; i < slide.length; i++) {
         const li = document.createElement("li");
-        //     Начальное значение индекса = 1, чтобы было единообразие,
-        //     атрибуты также начинаются с 1, а не с цифры 0, поэтому i + 1
-        li.setAttribute("data-carousel-indicators", i + 1);
-        li.classList.add("dot");
-        ol.append(li);
-        if (i == 0) {
-            li.style.opacity = "1";
-        }
-        //     5.4. Все элементы списка поместил в пустой массив, чтобы иметь возможность
-        //     работать через их индекс с каждым элементом.   
+        li.classList.add("slider-content__dot");        
         liArrey.push(li);
+        ol.append(li);
+        // Не обязательный блок. Чтобы все табы сразу были прозрачные
+        liArreyRemoveOpacity(i);         
     }
-    //     5.5 Смещение слайда на тот, который по порядку соответствует нажимаемому //индикатору. 
 
-    liArrey.forEach(li => {
-        li.addEventListener('click', () => {
-            //            Получаю атрибут каждого из индикаторов
-            let Attribute = li.getAttribute("data-carousel-indicators");
-            //            Присваиваю к уже созданной переменной slideIndex. Даты-атрибут начинаются
-            //            с 1, как и переменная slideIndex, так что действия будут ожидаемы
-            index = Attribute;
-            //            Для получение слайда не по порядку, а мгновенно, умножаю ширину слайда на  
-            //            slideIndex и таким образом получается ширина нужного для перемещения 
-            //            слайда.
-            offset = +width.replace(/[^0-9,.]/g, "") * (Attribute - 1);
-            subWrapper.style.transform = `translateX(-${offset}px)`;
-            liArrey.forEach(li => li.style.opacity = "0.5");
-            li.style.opacity = "1";
-            if (slide.length < 10) {
-                current.textContent = `0${+index}`;
-            } else {
-                current.textContent = +index;
-            }
+    const list = document.querySelectorAll(".slider-content__dot");
+
+    // Не обязательный блок. Чтобы первый таб сразу был активным
+    //  offset = 1
+    liArreyAddOpacity(offset);
+
+    //   4.3 Смещение слайда на тот, который по порядку
+    //  соответствует нажимаемому индикатору.
+    // Особенность листания слайдов! 
+    //  Выше, при нажатии на кнопку - ширина
+    // добаляется постеменно, суммируясь сама на себя!
+    // Сдесь же смещаю присваиванием ширины слайда умноженную на индекс
+    // нажимаего таба, который соответствует общему количству слайдов! 
+    // Т.е. нажимаю на третий таб, в итоге `translateX(-${560px * 3}px)`;
+    // и сразу перемещаемся на третий слайд.   
+    liArrey.forEach((item, num) => {
+        //   Событие на каждый элемент списка            
+        item.addEventListener('click', (e) => {
+        
+            offset = Math.round(+width.replace(/[^0-9,.]/g, ""));
+//             Перебираю слайды для того, чтобы синхоизировать нажимаемый таб с
+//  соответствющим слайдом
+            slide.forEach((Slide, b) => {
+    // При каждом нажатии удаляю со всех табов класс активности
+                liArreyRemoveOpacity(b);
+    // Если индекс нажимаегого таба равен индексу слайда
+                if (num == b) {
+    // Смещаю слайд по принципу, описанному в шапке пункта 4.
+                    offset = offset * num;
+                    subWrapper.style.transform = `translateX(-${offset}px)`;
+    // Активирую таб соответствующему слайду
+    // Присваиваю к index счетчика индекс нажатого таба, чтобы была
+    // синхронность подсчета, поскольку эта переменная используется
+    // при листании через кнопу. Следовательно, чтобы туда записался
+    // синхронный номер подсчета
+                    index = num + 1;
+    // Присваиваю индекс нажатого таба, поскольку необходим подсчет,
+    // начинающийся с цифры 0
+                    liArreyAddOpacity(b);                  
+                }
+            });
         });
     });
-
-
-
-
 };
 
 
