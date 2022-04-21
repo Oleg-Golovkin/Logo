@@ -167,7 +167,7 @@ console.log(Math.round(+width.replace(/[^0-9,.]/g, "")) / 8);
         allSet += setStatickDinamic;
         // 4. Если пальцем провели больше 20% слайда он перелистывается на следующий
         // (если ширина пройденного пути равна 1/6 ширине слайда)
-        if (setStatickDinamic > Math.round(+width.replace(/[^0-9,.]/g, "")) / 15) {
+        if (setStatickDinamic > Math.round(+width.replace(/[^0-9,.]/g, "")) / 5) {
             // К семещению прибавляем ширину слайда
             offset += Math.round(+width.replace(/[^0-9,.]/g, ""));
             // Перезаписываем пройденный путь пальца, иначе смещение будет 
@@ -182,7 +182,7 @@ console.log(Math.round(+width.replace(/[^0-9,.]/g, "")) / 8);
         }
 
         // 4. В обратную сторону
-        if (setStatickDinamic < ((Math.round(+width.replace(/[^0-9,.]/g, "")) / 15) * -1)) {
+        if (setStatickDinamic < ((Math.round(+width.replace(/[^0-9,.]/g, "")) / 5) * -1)) {
             offset -= Math.round(+width.replace(/[^0-9,.]/g, ""));
             allSet = offset;
             subWrapper.style.transform = `translateX(-${offset}px)`;
