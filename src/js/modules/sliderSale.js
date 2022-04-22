@@ -6,13 +6,13 @@ const sliderSale = ({
     sliderParentSelector,
     sliderSelector,
     subWrapperSelector,
-    totalSelector,
-    currentSelector,
-    nextSlideSelector,
-    prevSlideSelector,
+    totalSelector = null,
+    currentSelector = null,
+    nextSlideSelector = null,
+    prevSlideSelector = null,
     tabs,
     counter,
-
+    btn
 }) => {
     const slide = document.querySelectorAll(slideSelector),
         // Оболочка слайдов, табло счетчика и кнопок
@@ -106,63 +106,64 @@ const sliderSale = ({
     }
 
     //2.---------------------------Кнопки-------Не--обязательный блок-----------//
+    if (btn) {
+        //Движение слайдов вперед. Содержит необязательные элементы.
+        nextSlide.addEventListener("click", (e) => {
+            // Переключение слайдов
+            offset += widthSlide;
+            //   Ограничитель движения слайда. +width.replace(/\D/g, "")
+            //  это превращает 560px строка в 560 число
+            if (offset > (widthSlide *
+                    slide.length - 1)) {
+                offset = 0;
+            }
+            //   При листании вперед к offset прибавляется ширина следующего блока width.
+            //   В width защита ширна слайда в виде строки “560px”, а нужно 
+            //     цифрой 560 без px. Поэтому offset //преобразую 
+            //     из строки в число (+whith) и отнимаю у этого числа
+            //      два последних символа 
+            subWrapper.style.transform = `translateX(-${offset}px)`;
 
-    //Движение слайдов вперед. Содержит необязательные элементы.
-    nextSlide.addEventListener("click", (e) => {
-        // Переключение слайдов
-        offset += widthSlide;
-        //   Ограничитель движения слайда. +width.replace(/\D/g, "")
-        //  это превращает 560px строка в 560 число
-        if (offset > (widthSlide *
-                slide.length - 1)) {
-            offset = 0;
-        }
-        //   При листании вперед к offset прибавляется ширина следующего блока width.
-        //   В width защита ширна слайда в виде строки “560px”, а нужно 
-        //     цифрой 560 без px. Поэтому offset //преобразую 
-        //     из строки в число (+whith) и отнимаю у этого числа
-        //      два последних символа 
-        subWrapper.style.transform = `translateX(-${offset}px)`;
+            // Переключение счетчика слайдов
+            index++;
+            counterPlus(index);
+            // Формат счетчика 01 или 1
+            counterPlusZero(index);
+            if (tabs) {
+                // Снятие активности со всех табов
+                liArrey.forEach((item) => {
+                    item.style.opacity = '0.5';
+                });
+                // Подсветка активного таба
+                liArreyAddOpacity(index - 1);
+            }
+        });
 
-        // Переключение счетчика слайдов
-        index++;
-        counterPlus(index);
-        // Формат счетчика 01 или 1
-        counterPlusZero(index);
-        if (tabs) {
+
+        // Кнопка движения назад. Действия аналогичны движению вперед.
+        prevSlide.addEventListener("click", (e) => {
+            // Переключение слайдов
+            offset -= widthSlide;
+            if (offset < 0) {
+                offset = widthSlide * slide.length - 1;
+            }
+            subWrapper.style.transform = `translateX(-${offset}px)`;
+
+            // Переключение счетчика слайдов
+            index--;
+            counterPlus(index);
+            // Формат счетчика 01 или 1
+            counterPlusZero(index);
+
+
             // Снятие активности со всех табов
             liArrey.forEach((item) => {
                 item.style.opacity = '0.5';
             });
             // Подсветка активного таба
             liArreyAddOpacity(index - 1);
-        }
-    });
-
-
-    // Кнопка движения назад. Действия аналогичны движению вперед.
-    prevSlide.addEventListener("click", (e) => {
-        // Переключение слайдов
-        offset -= widthSlide;
-        if (offset < 0) {
-            offset = widthSlide * slide.length - 1;
-        }
-        subWrapper.style.transform = `translateX(-${offset}px)`;
-
-        // Переключение счетчика слайдов
-        index--;
-        counterPlus(index);
-        // Формат счетчика 01 или 1
-        counterPlusZero(index);
-
-
-        // Снятие активности со всех табов
-        liArrey.forEach((item) => {
-            item.style.opacity = '0.5';
         });
-        // Подсветка активного таба
-        liArreyAddOpacity(index - 1);
-    });
+    }
 
 
 
@@ -341,7 +342,9 @@ const sliderSale = ({
             if (tabs) {
                 // Снятие активности со всех табов
                 slide.forEach((item, i) => {
+                    console.log(item)
                     liArreyRemoveOpacity(i);
+                    
                 });
                 // Подсветка активного таба
                 // Получаю индекс таба не черзе index, а
