@@ -2,6 +2,9 @@
 
 // Не обязательный блок - если его убрать, остальные блоки работают.
 const sliderSale = ({
+    tabs,
+    counter,
+    btn,
     slideSelector,
     sliderParentSelector,
     sliderSelector,
@@ -10,9 +13,7 @@ const sliderSale = ({
     currentSelector = null,
     nextSlideSelector = null,
     prevSlideSelector = null,
-    tabs,
-    counter,
-    btn
+
 }) => {
     const slide = document.querySelectorAll(slideSelector),
         // Оболочка слайдов, табло счетчика и кнопок
@@ -34,8 +35,6 @@ const sliderSale = ({
         //  до целых Math.round , получается число 560 или 559
         // Только так, поскольку при адаптации размер слайдера меняется
         widthSlide = Math.round(+widthSlideString.replace(/[^0-9,.]/g, ""));
-
-
 
     //1.------------------------Обязательные переменные---------------------//
     //  счетчик смещенения +560px Использую для смещения слайдов 
@@ -207,7 +206,7 @@ const sliderSale = ({
             liArreyRemoveOpacity(i);
         }
 
-        const list = document.querySelectorAll(".slider-content__dot");
+        const list = document.querySelectorAll("#slider-content .slider-content__dot");
 
         // Не обязательный блок. Чтобы первый таб сразу был активным
         //  offset = 1
@@ -222,7 +221,7 @@ const sliderSale = ({
         // нажимаего таба, который соответствует общему количству слайдов! 
         // Т.е. нажимаю на третий таб, в итоге `translateX(-${560px * 3}px)`;
         // и сразу перемещаемся на третий слайд.   
-        liArrey.forEach((item, num) => {
+        list.forEach((item, num) => {
             //   Событие на каждый элемент списка            
             item.addEventListener('click', (e) => {
 
@@ -245,11 +244,15 @@ const sliderSale = ({
                         index = num + 1;
                         // Присваиваю индекс нажатого таба, поскольку необходим подсчет,
                         // начинающийся с цифры 0
-                        counterPlus(index);
-                        // Формат счетчика 01 или 11
-                        counterPlusZero(index);
+                        if (counter) {
+                            counterPlus(index);
+                            // Формат счетчика 01 или 11
+                            counterPlusZero(index);
+                        }
+                        if (tabs) {
+                            liArreyAddOpacity(b);
+                        }
 
-                        liArreyAddOpacity(b);
                     }
                 });
             });
@@ -339,19 +342,21 @@ const sliderSale = ({
                 subWrapper.style.transform = `translateX(-${offset}px)`;
             }
 
-            if (tabs) {
-                // Снятие активности со всех табов
-                slide.forEach((item, i) => {
-                    console.log(item)
-                    liArreyRemoveOpacity(i);
-                    
-                });
-                // Подсветка активного таба
-                // Получаю индекс таба не черзе index, а
-                //  через деление прокрученной ширины на начальную 
-                // ширину каждого слайда Итог. 1 2 3 4
-                liArreyAddOpacity(offset / widthSlide);
-            }
+
+
+
+            // Снятие активности со всех табов
+            slide.forEach((item,i) => {
+                console.log(i)
+                // liArreyRemoveOpacity(i);
+
+            });
+            // Подсветка активного таба
+            // Получаю индекс таба не черзе index, а
+            //  через деление прокрученной ширины на начальную 
+            // ширину каждого слайда Итог. 1 2 3 4
+            liArreyAddOpacity(offset / widthSlide);
+
 
             if (counter) {
                 //    Счетчик табов. 

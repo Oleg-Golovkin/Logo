@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     showFindDrawing();
     chekedFindDrowing();    
     sliderSale({
-        slideSelector: ".slider-content__slide[data-slider-slide]",
-        sliderParentSelector: ".slider-content[data-slider-contet]",
-        sliderSelector:".slider-content__wrapper" ,
-        subWrapperSelector: ".slider-content__subWrapper",
+        slideSelector: "#slider-content .slider-content__slide",
+        sliderParentSelector: ".slider-content#slider-content",
+        sliderSelector:"#slider-content .slider-content__wrapper" ,
+        subWrapperSelector: "#slider-content .slider-content__subWrapper",
         tabs: true,
         counter: false,
         btn: false,             
