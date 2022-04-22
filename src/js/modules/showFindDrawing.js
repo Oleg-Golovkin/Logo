@@ -6,6 +6,7 @@ const showFindDrawing = () => {
 
     btn.addEventListener("click", (e)=> {
         asideMenuDrawing.classList.toggle('content__find-drawing-active');       
+        console.log("afsad");
     });
 
 };

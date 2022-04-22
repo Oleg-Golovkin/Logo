@@ -5,6 +5,9 @@
         width: 100%
     //...............Меню поиска...........................................//
     &__find
+        height: 39px
+        position: relative
+        z-index: 3
         @media   ( max-width: 1200px )
             margin: 15px 0 0 0
     &__find-form
@@ -13,6 +16,7 @@
         width: 100%
         height: 39px
         background-color: var(--color-f3f3f3)
+        z-index: 3
         > input
             width: 79%
             height: 34px
@@ -60,24 +64,39 @@
                 right: 13px
                 top: 16px
     &__find-drawing-wrapper
+        z-index: -1
+        position: absolute
+        height: auto
+        top: 39px
+        width: 100%
+        background-color: black
         overflow: hidden
+        visibility: hidden
+        @media   ( max-width: 992px )
+            
     &__find-drawing
         transition: 0.5s all
         display: flex
         justify-content: space-between
         border: 1px solid var(--color-f3f3f3)
         border-bottom: 4px solid var(--color-f68038)
-        overflow: hidden
-        height: 100%
-        position: relative
-        transform: translateY(-120%)
+        // overflow: hidden
+        // height: 220px
+        // position: absolute
+        transform: translateY(-100%)
+        // z-index: -1
+        background-color: white
+        width: 100%
+
         @media   ( max-width: 992px )
             flex-direction: column
 
         &-active
-            position: relative
             transform: none
+            transform: translateY(0%)
+            visibility: visible
     &__find-links
+
         padding: 27px 62px 33px 41px
         list-style: none
         margin: 0
@@ -106,6 +125,15 @@
     align-items: flex-end
     position: relative
     touch-action: pan-y
+    &__title
+        &__products
+            font-family: 'UniSansCaps'
+            font-size: 36px
+            line-height: 1.2
+            font-weight: 900
+            text-transform: uppercase
+            letter-spacing: 0.025em
+            color: #dadada
 
     &__wrapper
         width: 847px
@@ -114,21 +142,25 @@
         box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25)
         overflow: hidden
         // touch-action: pan-y
+        touch-events: none
 
     &__subWrapper
         transition: 0.2s all
         display: flex
         height: 100%
         // touch-action: pan-y
+        touch-events: none
 
     &__slide
         width: 100%
         height: 100%
+        touch-events: none
         // touch-action: pan-y
         img
             width: 100%
             height: 100%
             object-fit: cover
+            touch-events: none
         &_products
             display: flex
 

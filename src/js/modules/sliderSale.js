@@ -2,9 +2,6 @@
 
 // Не обязательный блок - если его убрать, остальные блоки работают.
 const sliderSale = ({
-    tabs,
-    counter,
-    btn,
     slideSelector,
     sliderParentSelector,
     sliderSelector,
@@ -13,8 +10,16 @@ const sliderSale = ({
     currentSelector = null,
     nextSlideSelector = null,
     prevSlideSelector = null,
-
+    // Вкл/откл. табов
+    tabs,
+    // Вкл/откл. счетчика
+    counter,
+    // Вкл/откл. кнопок переключения
+    btn,
+    // Вкл/откл. переключения слайдов сенсором        
+    touch,
 }) => {
+    /* Слайды */
     const slide = document.querySelectorAll(slideSelector),
         // Оболочка слайдов, табло счетчика и кнопок
         sliderParent = document.querySelector(sliderParentSelector),
@@ -36,6 +41,9 @@ const sliderSale = ({
         // Только так, поскольку при адаптации размер слайдера меняется
         widthSlide = Math.round(+widthSlideString.replace(/[^0-9,.]/g, ""));
 
+
+
+
     //1.------------------------Обязательные переменные---------------------//
     //  счетчик смещенения +560px Использую для смещения слайдов 
     // в кнопках, табах, свайпах
@@ -47,8 +55,7 @@ const sliderSale = ({
         liArrey = [],
 
         //----------------------Переменные для сенсорного взаимодействия---------------/
-        //    Отключение сенсорного взаимодействия, если надо        
-        touch = true,
+
         // Координаты касания пальца однажды
         offsetStatick = 0,
         // Координаты движения пальца
@@ -65,14 +72,14 @@ const sliderSale = ({
     subWrapper.style.width = `${slide.length * 100}% `;
 
 
-    if (counter) {
-        //-------------------Счетчик------------Не обязательный блок---//
-        //Необязательный блок. Табло счетчика слайдеров в формате 01.
-        function counterPlusZero(i) {
+
+    //-------------------Счетчик------------Не обязательный блок---//
+    //Необязательный блок. Табло счетчика слайдеров в формате 01.
+    function counterPlusZero(i) {
+        if (counter) {
             if (i < 10) {
                 // Если слайдов на табло меньше 10, то формат 01 
                 current.textContent = `0${i}`;
-
                 // Исключение для общего количетсва слайдов, чтобы не было
                 // например, 016.
                 if (slide.length > 9) {
@@ -86,13 +93,15 @@ const sliderSale = ({
                 total.textContent = `${slide.length}`;
             }
         }
-        // Сразу отображается на странице
-        counterPlusZero(index);
+    }
+    // Сразу отображается на странице
+    counterPlusZero(index);
 
-        // Изменение табло счетчика слайдов. Подставил везде, 
-        // где изменяется index слайдов или аналогичные цифры (пункт 4), 
-        // чтобы была синхронность подсчета
-        function counterPlus(i) {
+    // Изменение табло счетчика слайдов. Подставил везде, 
+    // где изменяется index слайдов или аналогичные цифры (пункт 4), 
+    // чтобы была синхронность подсчета
+    function counterPlus(i) {
+        if (counter) {
             if (i > slide.length) {
                 index = 1;
                 current.textContent = `${index}`;
@@ -103,6 +112,7 @@ const sliderSale = ({
             }
         }
     }
+
 
     //2.---------------------------Кнопки-------Не--обязательный блок-----------//
     if (btn) {
@@ -122,12 +132,13 @@ const sliderSale = ({
             //     из строки в число (+whith) и отнимаю у этого числа
             //      два последних символа 
             subWrapper.style.transform = `translateX(-${offset}px)`;
-
-            // Переключение счетчика слайдов
-            index++;
-            counterPlus(index);
-            // Формат счетчика 01 или 1
-            counterPlusZero(index);
+            if (counter) {
+                // Переключение счетчика слайдов
+                index++;
+                counterPlus(index);
+                // Формат счетчика 01 или 1
+                counterPlusZero(index);
+            }
             if (tabs) {
                 // Снятие активности со всех табов
                 liArrey.forEach((item) => {
@@ -147,20 +158,22 @@ const sliderSale = ({
                 offset = widthSlide * slide.length - 1;
             }
             subWrapper.style.transform = `translateX(-${offset}px)`;
+            if (counter) {
+                // Переключение счетчика слайдов
+                index--;
+                counterPlus(index);
+                // Формат счетчика 01 или 1
+                counterPlusZero(index);
+            }
 
-            // Переключение счетчика слайдов
-            index--;
-            counterPlus(index);
-            // Формат счетчика 01 или 1
-            counterPlusZero(index);
-
-
-            // Снятие активности со всех табов
-            liArrey.forEach((item) => {
-                item.style.opacity = '0.5';
-            });
-            // Подсветка активного таба
-            liArreyAddOpacity(index - 1);
+            if (tabs) {
+                // Снятие активности со всех табов
+                liArrey.forEach((item) => {
+                    item.style.opacity = '0.5';
+                });
+                // Подсветка активного таба
+                liArreyAddOpacity(index - 1);
+            }
         });
     }
 
@@ -168,22 +181,25 @@ const sliderSale = ({
 
 
     //3.-----------------Табы--------Не обязательный блок----------------//
-    if (tabs) {
-        // Подсветка активного таба листания слайда. Подставил везде,
-        // где есть переборы с задействованием активного слайда
-        function liArreyAddOpacity(i) {
+
+    // Подсветка активного таба листания слайда. Подставил везде,
+    // где есть переборы с задействованием активного слайда
+    function liArreyAddOpacity(i) {
+        if (tabs) {
             liArrey[i].style.cssText = `background: url(../icons/slider-sale/${i + 1}.png) center center/cover no-repeat;`;
             liArrey[i].textContent = ``;
-
         }
+    }
 
-        // Все  табы слайдов прозрачные. Подставил везде,
-        // где есть переборы, чтобы охватить все табы
-        function liArreyRemoveOpacity(i) {
+    // Все  табы слайдов прозрачные. Подставил везде,
+    // где есть переборы, чтобы охватить все табы
+    function liArreyRemoveOpacity(i) {
+        if (tabs) {
             liArrey[i].style.cssText = `background: url(../icons/slider-sale/${0}.png) center center/cover no-repeat;`;
             liArrey[i].textContent = `${i + 1}`;
         }
-
+    }
+    if (tabs) {
         //3. Все, что ниже - это относится к создаюнию табов, нажатию на них и показу //соответствующего слайда, синхронизации счетчика слайдов и переменению слайдов не //через нажатия на соответствующие кнопки, а нажатию на таб. 
         //Загорание табов прописал в событии движений слайдов выше.
 
@@ -261,114 +277,124 @@ const sliderSale = ({
 
 
     //4----------------------Сенсорное взаимодействие-------Свайпы--------touch----//
+    // Вкл/откл. сенсора    
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        // код для мобильных устройств
+        touch = true;
 
-    //---При касании пальцем----//
-    slider.addEventListener("pointerdown", (e) => {
-        // Чтобы срабатывало только при касании с одного пальца
-        // Если второе касание, то e.isPrimary = false    
-        if (e.isPrimary) {
-            // 4.1. Только в момент касания получаем начальную точку 
-            // отсчета касания польца, чтобы
-            // динамически в пунктах 4.2 - 4.3 получать пройденный путь пальца
-            offsetStatick = e.clientX;
-        }
-    });
+    } else {
+        touch = false;
+    }
 
-    //---При движении пальцем----//
-    slider.addEventListener("pointermove", (e) => {
-        // Чтобы срабатывало только при касании с одного пальца
-        // Если второе касание, то e.isPrimary = false 
-        if (e.isPrimary) {
-            // 4.2. Постоянно получаем пройденный путь
-            offsetDinamic = e.clientX;
-            // 4.3 Расстояние, пройденное польцем в пикселях
-            // (отнимаем от координат начальной точки координаты
-            // пройденной точки). Влево свайп число с плюсом,
-            // вправо - отрицательное значение 
-            setStatickDinamic = offsetStatick - offsetDinamic;
-            //  4.4. когда еще раз двигаем пальцем, то прибавляем к пройденному
-            //  пути offset. При первом косании offset = 0, а далее -
-            // при нажатии на кнопку, таб, сенсорно offset перезаписывается.
-            // Таким образом, мы двигаем слайд от offset - последнего положения
-            offsetTouch = offset + setStatickDinamic;
-            subWrapper.style.transform = `translateX(-${offsetTouch}px)`;
-        }
-    });
-    //---Палец убрали----//
-    slider.addEventListener("pointerout", (e) => {
-        // Чтобы срабатывало только при касании с одного пальца
-        // Если второе касание, то e.isPrimary = false 
-        if (e.isPrimary) {
-            // 4.5. Если пальцем провели больше 1/5 ширины слайда слайда - он перелистывается
-            // (если ширина пройденного пути равна 1/5 ширине слайда). Особенность!
-            // Если один раз свайпнули вперед, а далее нажимаем, то будет листать вперед.
-            // Также назад. Это связано с тем, что в setStatickDinamic сохраняется длинна
-            // последнего свайпа, соответственно будет срабатывать тот if в какую сторону
-            // листали. Короче, чем выше цифра, тем меньше надо провести пальцем, чтобы
-            // автоматически перелистнуть слайд
-            if (setStatickDinamic > widthSlide / 5) {
-                // К семещению прибавляем ширину слайда
-                offset += widthSlide;
-                // Перезаписываем пройденный путь пальца, иначе смещение будет 
-                // пройденный путь + ширина слайда - не ровно встанет. Нужно, чтобы
-                // была только ширина offset слайда           
-                subWrapper.style.transform = `translateX(-${offset}px)`;
-            } else {
-                // В остальных случаях немоного двигаем слайд и возвращаем в первоначальное
-                // положение offset Без прибавления к нему ширины
-                subWrapper.style.transform = `translateX(-${offset}px)`;
-                //    Счетчик табов              
+    if (touch) {
+        //---При касании пальцем----//
+        slider.addEventListener("pointerdown", (e) => {
+            e.preventDefault();
+            // Чтобы срабатывало только при касании с одного пальца и без мыши
+            // Если второе касание, то e.isPrimary = false    
+            if (e.isPrimary && e.pointerType != "mouse") {
+                // 4.1. Только в момент касания получаем начальную точку 
+                // отсчета касания польца, чтобы
+                // динамически в пунктах 4.2 - 4.3 получать пройденный путь пальца
+                offsetStatick = e.clientX;
             }
+        });
 
-            // В обратную сторону
-            if (setStatickDinamic < ((widthSlide / 5) * -1)) {
-                offset -= widthSlide;
-                subWrapper.style.transform = `translateX(-${offset}px)`;
-            } else {
-                subWrapper.style.transform = `translateX(-${offset}px)`;
+        //---При движении пальцем----//
+        slider.addEventListener("pointermove", (e) => {
+            e.preventDefault();
+            // Чтобы срабатывало только при касании с одного пальца и без мыши
+            // Если второе касание, то e.isPrimary = false 
+            if (e.isPrimary && e.pointerType != "mouse") {
+                // 4.2. Постоянно получаем пройденный путь
+                offsetDinamic = e.clientX;
+                // 4.3 Расстояние, пройденное польцем в пикселях
+                // (отнимаем от координат начальной точки координаты
+                // пройденной точки). Влево свайп число с плюсом,
+                // вправо - отрицательное значение 
+                setStatickDinamic = offsetStatick - offsetDinamic;
+                //  4.4. когда еще раз двигаем пальцем, то прибавляем к пройденному
+                //  пути offset. При первом косании offset = 0, а далее -
+                // при нажатии на кнопку, таб, сенсорно offset перезаписывается.
+                // Таким образом, мы двигаем слайд от offset - последнего положения
+                offsetTouch = offset + setStatickDinamic;
+                subWrapper.style.transform = `translateX(-${offsetTouch}px)`;
             }
+        });
+        //---Палец убрали----//
+        slider.addEventListener("pointerout", (e) => {
+            e.preventDefault();
+            // Чтобы срабатывало только при касании с одного пальца и без мыши
+            // Если второе касание, то e.isPrimary = false 
+            if (e.isPrimary && e.pointerType != "mouse") {
+                // 4.5. Если пальцем провели больше 1/5 ширины слайда слайда - он перелистывается
+                // (если ширина пройденного пути равна 1/5 ширине слайда). Особенность!
+                // Если один раз свайпнули вперед, а далее нажимаем, то будет листать вперед.
+                // Также назад. Это связано с тем, что в setStatickDinamic сохраняется длинна
+                // последнего свайпа, соответственно будет срабатывать тот if в какую сторону
+                // листали. Короче, чем выше цифра, тем меньше надо провести пальцем, чтобы
+                // автоматически перелистнуть слайд
+                if (setStatickDinamic > widthSlide / 5) {
+                    // К семещению прибавляем ширину слайда
+                    offset += widthSlide;
+                    // Перезаписываем пройденный путь пальца, иначе смещение будет 
+                    // пройденный путь + ширина слайда - не ровно встанет. Нужно, чтобы
+                    // была только ширина offset слайда           
+                    subWrapper.style.transform = `translateX(-${offset}px)`;
+                } else {
+                    // В остальных случаях немоного двигаем слайд и возвращаем в первоначальное
+                    // положение offset Без прибавления к нему ширины
+                    subWrapper.style.transform = `translateX(-${offset}px)`;
+                    //    Счетчик табов              
+                }
 
-            // Переполнение листаний вперед
-            if (offset > (widthSlide *
-                    slide.length - 1)) {
-                offset = 0;
-                subWrapper.style.transform = `translateX(-${offset}px)`;
+                // В обратную сторону
+                if (setStatickDinamic < ((widthSlide / 5) * -1)) {
+                    offset -= widthSlide;
+                    subWrapper.style.transform = `translateX(-${offset}px)`;
+                } else {
+                    subWrapper.style.transform = `translateX(-${offset}px)`;
+                }
+
+                // Переполнение листаний вперед
+                if (offset > (widthSlide *
+                        slide.length - 1)) {
+                    offset = 0;
+                    subWrapper.style.transform = `translateX(-${offset}px)`;
+                }
+
+                // Переполнение листаний назад
+                if (offset < 0) {
+                    offset = widthSlide *
+                        (slide.length - 1);
+                    subWrapper.style.transform = `translateX(-${offset}px)`;
+                }
+
+                if (tabs) {
+                    // Снятие активности со всех табов
+                    slide.forEach((item, i) => {
+                        liArreyRemoveOpacity(i);
+
+                    });
+                    // Подсветка активного таба
+                    // Получаю индекс таба не черзе index, а
+                    //  через деление прокрученной ширины на начальную 
+                    // ширину каждого слайда Итог. 1 2 3 4
+                    liArreyAddOpacity(offset / widthSlide);
+                }
+
+                if (counter) {
+                    //    Счетчик табов. 
+                    counterPlus((offset / widthSlide) + 1);
+                    // Формат счетчика 01 или 1
+                    counterPlusZero((offset / widthSlide) + 1);
+                    // Чтобы там, где счетчик считает через index была
+                    // синхронность подсчета
+                    index = (offset / widthSlide) + 1;
+                }
+
             }
-
-            // Переполнение листаний назад
-            if (offset < 0) {
-                offset = widthSlide *
-                    (slide.length - 1);
-                subWrapper.style.transform = `translateX(-${offset}px)`;
-            }
-
-
-
-
-            // Снятие активности со всех табов
-            slide.forEach((item,i) => {
-                console.log(i)
-                // liArreyRemoveOpacity(i);
-
-            });
-            // Подсветка активного таба
-            // Получаю индекс таба не черзе index, а
-            //  через деление прокрученной ширины на начальную 
-            // ширину каждого слайда Итог. 1 2 3 4
-            liArreyAddOpacity(offset / widthSlide);
-
-
-            if (counter) {
-                //    Счетчик табов. 
-                counterPlus((offset / widthSlide) + 1);
-                // Формат счетчика 01 или 1
-                counterPlusZero((offset / widthSlide) + 1);
-                // Чтобы там, где счетчик считает через index была
-                // синхронность подсчета
-                index = (offset / widthSlide) + 1;
-            }
-
-        }
-    });
+        });
+    }
 };
 export default sliderSale;
