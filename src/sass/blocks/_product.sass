@@ -5,7 +5,10 @@
             display: none
             width: 100%
     &_products
-        width: 282.33333333px
+        width: 263px
+        height: 383px
+        padding: 42px 11px 15px 26px
+        border: 1px solid black
     &__stock
         display: flex
         justify-content: center
@@ -30,25 +33,44 @@
         height: 147px
         @media   ( max-width: 1200px )
             display: none
-    &__image > a
-        display: block
-        width: 100%
-        height: 100%
-        background: url('../img/aside-menu/kartinka_4966.jpg')
-        @media   ( max-width: 1200px )
-            display: none
+    &__image
+        > a
+            display: block
+            width: 100%
+            height: 100%
+            background: url('../img/aside-menu/kartinka_4966.jpg')
+            @media   ( max-width: 1200px )
+                display: none
+        &_products
+            width: 229px
+            height: 213px
+            > a
+                background: url('../img/slider-products/1.png') center center/cover no-repeat
 
     &__title
         font-family: Roboto
         font-size: 1rem
         font-weight: 300
-        color: #36949f        
+        color: #36949f
         &_aside-menu
             line-height: 1.5em
             margin-top: 11px
             margin-left: 11px
             @media   ( max-width: 1200px )
-            display: none
+                display: none
+        &_products
+            font-size: 16px
+            line-height: 22px
+            font-weight: 300
+            color: #36949f
+            margin: 0px 0px 0px 0px
+    &__span
+        &_products
+            font-size: 16px
+            line-height: 22px
+            font-weight: 900
+            color: #36949f
+            margin: 0px 0px 0px 0px
 
     &__wrapper
         display: flex
@@ -59,6 +81,9 @@
         max-height: 40px
         @media   ( max-width: 1200px )
             display: none
+        &_products
+            margin: 29px 0px 0px 0px
+
     &__price
         font-family: Roboto
         font-size: 1.5rem
@@ -67,6 +92,9 @@
         color: var(--color-333333)
         &_aside-menu
             margin-left: 2px
+        &_products
+            font-size: 24px
+            line-height: 24px
 //     &__old-price
 
 // .header
