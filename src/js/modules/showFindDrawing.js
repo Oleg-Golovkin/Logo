@@ -1,5 +1,5 @@
 const showFindDrawing = () => {
-    const btn = document.querySelectorAl('.content__find-btn-everywhere'),
+    const btn = document.querySelector('.content__find-btn-everywhere'),
         // Меню равной ширины, поэтому достаточно получить ширину одного из них
         asideMenuDrawing = document.querySelector('.content__find-drawing');
     // Получаю ширину одного из них. По умолчанию в css ширина их 0px
