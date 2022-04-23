@@ -4,9 +4,8 @@ const showFindDrawing = () => {
         asideMenuDrawing = document.querySelector('.content__find-drawing');
     // Получаю ширину одного из них. По умолчанию в css ширина их 0px
 
-    btn.addEventListener("click", (e)=> {
+    btn.addEventListener("click", function(e) {
         asideMenuDrawing.classList.toggle('content__find-drawing-active');       
-        console.log("afsad");
     });
 
 };
