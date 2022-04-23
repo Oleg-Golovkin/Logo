@@ -73,6 +73,7 @@
             margin: 0px 0px 0px 0px
 
     &__wrapper
+        position: relative
         display: flex
         align-items: center
         justify-content: space-between
@@ -82,7 +83,7 @@
         @media   ( max-width: 1200px )
             display: none
         &_products
-            margin: 29px 0px 0px 0px
+            margin: 18px 0px 0px 0px
 
     &__price
         font-family: Roboto
@@ -93,11 +94,22 @@
         &_aside-menu
             margin-left: 2px
         &_products
+
             font-size: 24px
             line-height: 24px
-//     &__old-price
 
-// .header
-//     &__sub-secondary-img
+    // .product__old-price
 
-//     &__sub-secondary-number
+    &__old-price
+        right: 0
+        top: -40%
+        position: absolute
+        font-size: 18px
+        line-height: 24px
+        font-weight: 300
+        text-decoration: line-through
+        color: #999999
+        // .product__old-price_products
+
+        // &_products
+
