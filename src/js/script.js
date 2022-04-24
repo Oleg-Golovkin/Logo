@@ -6,6 +6,7 @@ import sliderСompanies from "./modules/sliderСompanies";
 import showFindDrawing from "./modules/showFindDrawing";
 import chekedFindDrowing from "./modules/chekedFindDrowing";
 import sliderSale from "./modules/sliderSale";
+import showSubMenuProducts from "./modules/showSubMenuProducts";
 
 
 
@@ -40,5 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         counter: true,
         btn: true, 
     });
+    showSubMenuProducts();
     
 });
