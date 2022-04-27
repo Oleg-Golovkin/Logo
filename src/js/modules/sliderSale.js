@@ -326,8 +326,8 @@ const sliderSale = ({
             }
         });
         //---Палец убрали----//
-        slider.addEventListener("pointerout", (e) => {
-            e.preventDefault();
+        slider.addEventListener("pointerleave", (e) => {
+            e.preventDefault();            
             // Чтобы срабатывало только при касании с одного пальца и без мыши
             // Если второе касание, то e.isPrimary = false 
             if (e.isPrimary && e.pointerType != "mouse") {
@@ -341,6 +341,7 @@ const sliderSale = ({
                 if (setStatickDinamic > widthSlide / 5) {
                     // К семещению прибавляем ширину слайда
                     offset += widthSlide;
+                    // console.log(offset += widthSlide);
                     // Перезаписываем пройденный путь пальца, иначе смещение будет 
                     // пройденный путь + ширина слайда - не ровно встанет. Нужно, чтобы
                     // была только ширина offset слайда           
@@ -349,9 +350,8 @@ const sliderSale = ({
                     // В остальных случаях немоного двигаем слайд и возвращаем в первоначальное
                     // положение offset Без прибавления к нему ширины
                     subWrapper.style.transform = `translateX(-${offset}px)`;
-                    //    Счетчик табов              
+                    //    Счетчик табов  
                 }
-
                 // В обратную сторону
                 if (setStatickDinamic < ((widthSlide / 5) * -1)) {
                     offset -= widthSlide;
@@ -384,7 +384,7 @@ const sliderSale = ({
                     // Получаю индекс таба не черзе index, а
                     //  через деление прокрученной ширины на начальную 
                     // ширину каждого слайда Итог. 1 2 3 4
-                    // liArreyAddOpacity(offset / widthSlide);
+                    liArreyAddOpacity(offset / widthSlide);
                 }
 
                 if (counter) {

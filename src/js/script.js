@@ -3,7 +3,6 @@ import showHeaderMenu from "./modules/showHeaderMenu";
 import showAsideMenu from "./modules/showAsideMenu";
 import turnAsideMenu from "./modules/turnAsideMenu";
 import sliderСompanies from "./modules/sliderСompanies";
-import showFindDrawing from "./modules/showFindDrawing";
 import chekedFindDrowing from "./modules/chekedFindDrowing";
 import sliderSale from "./modules/sliderSale";
 import showSubMenuProducts from "./modules/showSubMenuProducts";
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showAsideMenu();
     turnAsideMenu();
     sliderСompanies();
-    showFindDrawing();
     chekedFindDrowing();    
     sliderSale({
         slideSelector: "#slider-content .slider-content__slide",
