@@ -48,6 +48,7 @@ const sliderSale = ({
         widthSlide = Math.round(+widthSlideString.replace(/[^0-9,.]/g, ""));
 
 
+
     //1.------------------------Обязательные переменные---------------------//
     //  счетчик смещенения +560px Использую для смещения слайдов 
     // в кнопках, табах, свайпах
@@ -188,7 +189,7 @@ const sliderSale = ({
     // Подсветка активного таба листания слайда. Подставил везде,
     // где есть переборы с задействованием активного слайда
     function liArreyAddOpacity(i) {
-        if (tabs) {
+        if (tabs) {            
             liArrey[i].style.cssText = `background: url(../icons/slider-sale/${i + 1}.png) center center/cover no-repeat;`;
             liArrey[i].textContent = ``;
         }
@@ -231,6 +232,7 @@ const sliderSale = ({
         // Не обязательный блок. Чтобы первый таб сразу был активным
         //  offset = 1
         liArreyAddOpacity(offset);
+        
 
         //   3.3 Смещение слайда на тот, который по порядку
         //  соответствует нажимаемому индикатору.
@@ -396,7 +398,10 @@ const sliderSale = ({
                     // Получаю индекс таба не черзе index, а
                     //  через деление прокрученной ширины на начальную 
                     // ширину каждого слайда Итог. 1 2 3 4
-                    liArreyAddOpacity(offset / widthSlide);
+                    // liArreyAddOpacity(offset / widthSlide);
+                    console.log(offset );
+                    console.log(widthSlide);
+                   
                 }
 
                 if (counter) {
