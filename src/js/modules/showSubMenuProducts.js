@@ -6,7 +6,8 @@ const showSubMenuProducts = () => {
         productTitleProducts = document.querySelectorAll('.product__title_products'),
         productStockProducts = document.querySelectorAll('.product__stock_products'),
         productWrapperProducts = document.querySelectorAll('.product__wrapper_products'),
-        productPriceBackground = document.querySelectorAll('.product__price_products');
+        productPriceBackground = document.querySelectorAll('.product__price_products'),
+        main = document.querySelector('main');
 
 
 
@@ -37,14 +38,6 @@ const showSubMenuProducts = () => {
         productPriceBackground[index].classList.remove('product__price_background');
     }
 
-    function allDeactivationBackgroundProducts() {
-        products.forEach((item, b) => {
-            deactivationBackgroundProducts(b);
-        });
-    }
-
-
-
 
     function showBackgroundProducts(index) {
         // Активация подменю    
@@ -54,14 +47,42 @@ const showSubMenuProducts = () => {
         }
     }
 
-    products.forEach((product, i) => {
-        product.addEventListener('click', (e) => {
-            products.forEach((item, b) => {
-                deactivationBackgroundProducts(b);
-            });
-            showBackgroundProducts(i);
+
+    main.addEventListener('pointerdown', (e) => {
+        products.forEach((product, i) => {
+            deactivationBackgroundProducts(i);
+            if (e.target.closest(".product_products") && e.target == product) {
+                showBackgroundProducts(i);
+            }
+            if (!e.target.closest(".product_products")) {
+                deactivationBackgroundProducts(i);
+            }
         });
+
     });
+    main.addEventListener('pointermove', (e) => {
+        if (e.pointerType == "mouse") {
+            products.forEach((product, i) => {
+                if (e.target.closest(".product_products") && e.target == product) {
+                    showBackgroundProducts(i);
+                }
+                if (!e.target.closest(".product_products")) {
+                    deactivationBackgroundProducts(i);
+                }
+            });
+        }
+        console.log('pointermove');
+    });
+
+
+
+    // backgroundProducts[i].addEventListener('mouseout', (e) => {
+    //     if (!e.target.closest('.background-products__wrapper')) {
+    //         deactivationBackgroundProducts(i);
+    //     }
+
+    // });
+
 
 
 

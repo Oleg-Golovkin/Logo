@@ -145,9 +145,9 @@
         margin-top: 15px
         box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25)
         overflow: hidden
-        @media (max-width: 992px)
-            width: auto
-            max-width: 800px
+        @media (max-width: 868px)
+            width: 100%
+            
         &_products
             width: 850px
             height: 797px
@@ -157,16 +157,13 @@
         transition: 0.2s all
         display: flex
         height: 100%
-        // touch-action: pan-y
-        touch-events: none
 
     &__slide
-        width: 854px
+        width: 847px
         height: auto
         touch-events: none
-        // touch-action: pan-y
         @media (max-width: 992px)
-            max-width: 800px
+            // max-width: 800px
         img
             width: 100%
             height: 100%
@@ -207,6 +204,9 @@
         left: 50%
         transform: translateX(-50%)
         list-style: none
+        @media (max-width: 576px)
+            display: none
+            
 
     &__dot
         display: flex

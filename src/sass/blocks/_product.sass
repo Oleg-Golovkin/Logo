@@ -9,7 +9,7 @@
     &_products
         width: 263px
         height: 383px
-        padding: 42px 11px 15px 26px
+        padding: 29px 11px 15px 26px
         border: 1px solid black
     &__stock
         display: flex
@@ -40,6 +40,9 @@
         height: 147px
         @media   ( max-width: 1200px )
             display: none
+        &_products
+            @media   ( max-width: 1200px )
+                display: block
     &__image
         > a
             display: block
@@ -48,11 +51,14 @@
             background: url('../img/aside-menu/kartinka_4966.jpg')
             @media   ( max-width: 1200px )
                 display: none
+
         &_products
             width: 229px
             height: 213px
             > a
                 background: url('../img/slider-products/1.png') center center/cover no-repeat
+                @media   ( max-width: 1200px )
+                    display: block
 
     &__title
         font-family: Roboto
@@ -71,6 +77,8 @@
             font-weight: 300
             color: #36949f
             margin: 0px 0px 0px 0px
+            @media   ( max-width: 1200px )
+                display: block
         &_background
             max-width: 163px
             color: #ffffff
@@ -98,6 +106,8 @@
         &_products
             z-index: -1
             margin: 18px 0px 0px 0px
+            @media   ( max-width: 1200px )
+                display: flex
         &_background
             margin: 24px 0px 0px 0px
 
@@ -112,10 +122,9 @@
         &_products
             font-size: 24px
             line-height: 24px
-        &_background            
+        &_background
             color: #ffffff
 
-    // .product__old-price
 
     &__old-price
         right: 0
@@ -127,6 +136,8 @@
         text-decoration: line-through
         color: #999999
         &_background
+            display: none
+        &_products
             display: none
 
 .background-products
