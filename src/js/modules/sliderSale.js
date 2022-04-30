@@ -47,7 +47,7 @@ const sliderSale = ({
         // Только так, поскольку при адаптации размер слайдера меняется
         widthSlide = Math.round(+widthSlideString.replace(/[^0-9,.]/g, ""));
 
-    
+
     //1.------------------------Обязательные переменные---------------------//
     //  счетчик смещенения +560px Использую для смещения слайдов 
     // в кнопках, табах, свайпах
@@ -193,7 +193,7 @@ const sliderSale = ({
             liArrey[i].textContent = ``;
         }
     }
-    
+
 
     // Все  табы слайдов прозрачные. Подставил везде,
     // где есть переборы, чтобы охватить все табы
@@ -325,9 +325,21 @@ const sliderSale = ({
                 subWrapper.style.transform = `translateX(-${offsetTouch}px)`;
             }
         });
+        // Если просто касаемся пальцем, слайды не листаются.
+        
+        slider.addEventListener('pointerdown', (e) => {
+            if (e.isPrimary && e.pointerType != "mouse") {
+                setStatickDinamic=0; 
+            }
+        });
         //---Палец убрали----//
+        // ['pointerdown', 'pointerup', 'pointermove', 'pointerover', 'pointerout', 'pointerenter', 'pointerleave'].forEach((item, i) => {
+        //     slider.addEventListener(item, () => {
+        //         console.log(item);
+        //     });
+        // });
         slider.addEventListener("pointerleave", (e) => {
-            e.preventDefault();            
+            e.preventDefault();
             // Чтобы срабатывало только при касании с одного пальца и без мыши
             // Если второе касание, то e.isPrimary = false 
             if (e.isPrimary && e.pointerType != "mouse") {
