@@ -127,10 +127,13 @@
     align-items: center
     justify-content: center
     position: relative
-    touch-action: pan-y 
-    
+    touch-action: pan-y
+    &_products
+        margin: 60px 0px 0px 0px
+
     &__title
         &_products
+            
             font-family: 'UniSansCaps'
             font-size: 36px
             line-height: 1.2
@@ -138,6 +141,17 @@
             text-transform: uppercase
             letter-spacing: 0.025em
             color: #dadada
+    &__title-counter
+        
+        &_products
+            width: 100%
+            display: flex
+            justify-content: space-between
+            align-items: center
+    &__counter
+        &_products
+            display: flex
+            align-items: center
 
     &__wrapper
         width: 847px
@@ -147,9 +161,9 @@
         overflow: hidden
         @media (max-width: 868px)
             width: 100%
-            
+
         &_products
-            width: 850px
+            width: 852px
             height: 797px
             box-shadow: none
 
@@ -173,6 +187,7 @@
             display: flex
             flex-wrap: wrap
             justify-content: space-between
+            margin: 0px 20px 0px 0px
 
     &__сounter
         display: flex
@@ -206,7 +221,6 @@
         list-style: none
         @media (max-width: 576px)
             display: none
-            
 
     &__dot
         display: flex

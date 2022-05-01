@@ -60,28 +60,32 @@ const showSubMenuProducts = () => {
         });
 
     });
+
     main.addEventListener('pointermove', (e) => {
         if (e.pointerType == "mouse") {
-            products.forEach((product, i) => {
-                if (e.target.closest(".product_products") && e.target == product) {
-                    showBackgroundProducts(i);
-                }
-                if (!e.target.closest(".product_products")) {
+            if (!e.target.closest(".product_products")) {
+                products.forEach((product, i) => {
                     deactivationBackgroundProducts(i);
-                }
-            });
+                });
+            }
+
         }
-        console.log('pointermove');
+    });
+
+
+    products.forEach((product, i) => {
+        product.addEventListener('pointermove', (e) => {
+            if (e.pointerType == "mouse") {
+                showBackgroundProducts(i);
+            }
+        });
     });
 
 
 
-    // backgroundProducts[i].addEventListener('mouseout', (e) => {
-    //     if (!e.target.closest('.background-products__wrapper')) {
-    //         deactivationBackgroundProducts(i);
-    //     }
 
-    // });
+
+
 
 
 
