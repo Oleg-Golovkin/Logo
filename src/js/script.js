@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* После полной загрузки HTML выполняется JS */
     showHeaderMenu();
     showAsideMenu();
-    turnAsideMenu();
+    turnAsideMenu(); 
     sliderСompanies();
     chekedFindDrowing();    
     sliderSale({
