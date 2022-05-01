@@ -6,7 +6,7 @@ import sliderСompanies from "./modules/sliderСompanies";
 import chekedFindDrowing from "./modules/chekedFindDrowing";
 import sliderSale from "./modules/sliderSale";
 import showSubMenuProducts from "./modules/showSubMenuProducts";
-
+import Swiper from "./modules/swiper-bundle.min";
 
 document.addEventListener("DOMContentLoaded", () => {
     /* После полной загрузки HTML выполняется JS */
@@ -42,10 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const swiper = new Swiper('.swiper', {
         // Optional parameters
-        loop: false,
-
-      
-       
+        // loop: true,
+        slidesPerView: 3,
+        grid: {
+            rows: 3,
+            fill: "column"
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
     });
+
 
 });
