@@ -189,7 +189,7 @@ const sliderSale = ({
     // Подсветка активного таба листания слайда. Подставил везде,
     // где есть переборы с задействованием активного слайда
     function liArreyAddOpacity(i) {
-        if (tabs) {
+        if (tabs) {            
             liArrey[i].style.cssText = `background: url(../icons/slider-sale/${i + 1}.png) center center/cover no-repeat;`;
             liArrey[i].textContent = ``;
         }
@@ -232,7 +232,7 @@ const sliderSale = ({
         // Не обязательный блок. Чтобы первый таб сразу был активным
         //  offset = 1
         liArreyAddOpacity(offset);
-
+        
 
         //   3.3 Смещение слайда на тот, который по порядку
         //  соответствует нажимаемому индикатору.
@@ -327,8 +327,19 @@ const sliderSale = ({
                 subWrapper.style.transform = `translateX(-${offsetTouch}px)`;
             }
         });
+        // Если просто касаемся пальцем, слайды не листаются.
         
-        //---Палец убрали----//        
+        slider.addEventListener('pointerdown', (e) => {
+            if (e.isPrimary && e.pointerType != "mouse") {
+                setStatickDinamic=0; 
+            }
+        });
+        //---Палец убрали----//
+        // ['pointerdown', 'pointerup', 'pointermove', 'pointerover', 'pointerout', 'pointerenter', 'pointerleave'].forEach((item, i) => {
+        //     slider.addEventListener(item, () => {
+        //         console.log(item);
+        //     });
+        // });
         slider.addEventListener("pointerleave", (e) => {
             e.preventDefault();
             // Чтобы срабатывало только при касании с одного пальца и без мыши
@@ -344,6 +355,7 @@ const sliderSale = ({
                 if (setStatickDinamic > widthSlide / 5) {
                     // К семещению прибавляем ширину слайда
                     offset += widthSlide;
+                    // console.log(offset += widthSlide);
                     // Перезаписываем пройденный путь пальца, иначе смещение будет 
                     // пройденный путь + ширина слайда - не ровно встанет. Нужно, чтобы
                     // была только ширина offset слайда           
@@ -386,7 +398,10 @@ const sliderSale = ({
                     // Получаю индекс таба не черзе index, а
                     //  через деление прокрученной ширины на начальную 
                     // ширину каждого слайда Итог. 1 2 3 4
-                    liArreyAddOpacity(offset / widthSlide);
+                    // liArreyAddOpacity(offset / widthSlide);
+                    console.log(offset );
+                    console.log(widthSlide);
+                   
                 }
 
                 if (counter) {
@@ -398,14 +413,7 @@ const sliderSale = ({
                     // синхронность подсчета
                     index = (offset / widthSlide) + 1;
                 }
-            }
-        });
 
-        // Если просто касаемся пальцем, слайды не листаются.
-        slider.addEventListener('pointerdown', (e) => {
-            if (e.isPrimary && e.pointerType != "mouse") {
-                // Обнуляем переменную, ответственную за пролистывание
-                setStatickDinamic = 0;
             }
         });
     }

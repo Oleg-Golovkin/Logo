@@ -41,10 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
     showSubMenuProducts();
 
     const swiper = new Swiper('.swiper', {
-//**** Колличество одновременного показа слайдов
+
        
-//**** Несколько строк слайдов. Установить 
-//**** размер обертки и каждого элемента слайда
+
         
         
 //**** Включение кнопок
@@ -97,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // direction: "horizontal",
 //**** Если включено, то создается доп. оболочка для каждого
 //**** слайда    
-        createElements: true,
+        createElements: false,
 //**** Различные виды центрирования слайдов
         centerInsufficientSlides: false,
         centeredSlides: false,
