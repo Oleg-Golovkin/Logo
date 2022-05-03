@@ -6,7 +6,7 @@ import sliderСompanies from "./modules/sliderСompanies";
 import chekedFindDrowing from "./modules/chekedFindDrowing";
 import sliderSale from "./modules/sliderSale";
 import showSubMenuProducts from "./modules/showSubMenuProducts";
-import Swiper, { Navigation, Pagination } from "./modules/swiper-bundle.min";
+import Swiper from "./modules/swiper-bundle.min";
 
 document.addEventListener("DOMContentLoaded", () => {
     /* После полной загрузки HTML выполняется JS */
@@ -42,13 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const swiper = new Swiper('.swiper', {
 //**** Колличество одновременного показа слайдов
-        slidesPerView: 3,
+       
 //**** Несколько строк слайдов. Установить 
 //**** размер обертки и каждого элемента слайда
-        grid: {
-            rows: 2,
-            // fill: "column"
-        },
+        
+        
 //**** Включение кнопок
         //**** В свойства prevEl и nextEl вставляем 
         //**** свои селекторы кнопок, созданные в любом месте
@@ -56,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
             prevEl: '.slider-content__prev_products',
             nextEl: '.slider-content__next_products',
             
-        },       
+        },  
+        
 //**** Пагинация. Точки, номер слайда и другое
         pagination: {            
             //**** Тип пагинации: 	'bullets' | 'fraction' | 'progressbar' | 'custom'
@@ -75,19 +74,19 @@ document.addEventListener("DOMContentLoaded", () => {
             //**** Перемещение пагинации в селектор "." или HTML элемент ""
             el: ".slider-content__сounter_products-wpapper",
           },
-        spaceBetween: 31,
+        spaceBetween: 28,
 //****  Автоматически подстраивается под размеры окна
-        watchSlidesProgress: true,
+        // watchSlidesProgress: false,
 //****  Скорость перехода между слайдами
-        speed: 100,
+        // speed: 100,
 //****  Бесконечная прокрутка, через видимый возврат
         rewind: true,
 //****  Бесконечная прокрутка, через невидимый возврат.
-//****Не использовать с rewind
-        loop: false,
+//****Не использовать с rewind, grid
+        // loop: false,
 //**** Предотваращает нажатие на ссылки на слайдах во время
 //****прокрутки
-        preventClicks: true,
+        // preventClicks: true,
 //**** С какого слайда начать показ слайдов. Начин. с нуля
         initialSlide: 0,
 //****Эффект перехода между слайдами. Виды 
@@ -95,10 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
 //**** Не работает с grid
         // effect: 'flip'
 //***/ Направление листания 'horizontal' | 'vertical'
-        direction: "horizontal",
+        // direction: "horizontal",
 //**** Если включено, то создается доп. оболочка для каждого
 //**** слайда    
-        createElements: false,
+        createElements: true,
 //**** Различные виды центрирования слайдов
         centerInsufficientSlides: false,
         centeredSlides: false,
@@ -108,23 +107,34 @@ document.addEventListener("DOMContentLoaded", () => {
 //**** Работает в основном размерами и отступами
         breakpoints: {
             // when window width is >= 320px
-            320: {
-            // slidesPerView: 2,
-            // spaceBetween: 20
-            },
+        320: {
+                slidesPerView: 1,
+                grid: {
+                        rows: 2,
+                        fill: "column"
+                },
+        },
             // when window width is >= 480px
-            480: {
-            // slidesPerView: 3,
-            // spaceBetween: 30
-            },
+        632: {
+               slidesPerView: 2,
+                grid: {
+                        rows: 2,
+                        fill: "column"
+                }, 
+                
+                  
+        },
             // when window width is >= 640px
-            640: {
-            // slidesPerView: 4,
-            // spaceBetween: 40
-            }
+        992: {
+                grid: {
+                        rows: 2,
+                        fill: "column",
+        },
+                slidesPerView: 3,
+                }
         },
 //**** Адаптация слайдов в зависимости от размера окна
-        // autoHeight: true
+        // autoHeight: true,
 //**** Отключение сенсорного переключения слайдов
         allowTouchMove: true,
 //**** Отключение листания назад слайдов
