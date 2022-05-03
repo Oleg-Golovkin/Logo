@@ -133,7 +133,6 @@
 
     &__title
         &_products
-
             font-family: 'UniSansCaps'
             font-size: 36px
             line-height: 1.2
@@ -141,13 +140,16 @@
             text-transform: uppercase
             letter-spacing: 0.025em
             color: #dadada
+            @media (max-width: 576px)
+                text-align: center
     &__title-counter
-
         &_products
             width: 100%
             display: flex
             justify-content: space-between
             align-items: center
+            @media (max-width: 767px)
+                flex-direction: column
     &__counter
         &_products
             display: flex
@@ -254,10 +256,11 @@
 .swiper
     max-width: 850px
     margin: 60px auto 0px auto
-    height: 1000px
+    height: 920px
     @media (max-width: 992px)
-        height: 900px
-        // max-width: 573px
+        height: 948px
+    &-wrapper
+        margin: 28px 0px 0px 0px
 
     &-slide
         height: 383px

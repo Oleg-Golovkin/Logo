@@ -58,8 +58,19 @@ const showSubMenuProducts = () => {
                 deactivationBackgroundProducts(i);
             }
         });
-
     });
+
+    products.forEach((product, i) => {
+        deactivationBackgroundProducts(i);
+        product.addEventListener('pointerdown', (e) => {
+            
+            
+            showBackgroundProducts(i);
+        });
+    });
+
+
+
 
     main.addEventListener('pointermove', (e) => {
         if (e.pointerType == "mouse") {
