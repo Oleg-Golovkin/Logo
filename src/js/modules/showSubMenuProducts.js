@@ -49,11 +49,9 @@ const showSubMenuProducts = () => {
 
 
     main.addEventListener('pointerdown', (e) => {
+        e.stopPropagation();
         products.forEach((product, i) => {
-            deactivationBackgroundProducts(i);
-            if (e.target.closest(".product_products") && e.target == product) {
-                showBackgroundProducts(i);
-            }
+            deactivationBackgroundProducts(i);           
             if (!e.target.closest(".product_products")) {
                 deactivationBackgroundProducts(i);
             }
@@ -63,16 +61,13 @@ const showSubMenuProducts = () => {
     products.forEach((product, i) => {
         deactivationBackgroundProducts(i);
         product.addEventListener('pointerdown', (e) => {
-            
-            
+            e.stopPropagation();
             showBackgroundProducts(i);
         });
     });
 
-
-
-
     main.addEventListener('pointermove', (e) => {
+        e.stopPropagation();
         if (e.pointerType == "mouse") {
             if (!e.target.closest(".product_products")) {
                 products.forEach((product, i) => {
@@ -84,8 +79,9 @@ const showSubMenuProducts = () => {
     });
 
 
-    products.forEach((product, i) => {
+    products.forEach((product, i) => {        
         product.addEventListener('pointermove', (e) => {
+            e.stopPropagation();
             if (e.pointerType == "mouse") {
                 showBackgroundProducts(i);
             }
