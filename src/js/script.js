@@ -38,8 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 spaceBetween: 28,
                 rewind: true,
-
-
+                watchSlidesProgress: true,                
                 breakpoints: {
                         320: {
                                 slidesPerView: 1,
@@ -60,31 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 slidesPerView: 3,
                         }
                 },
-
-
-
-        });
-
-        // allowSlideNext: true,
-
-        swiper.on('click', function () {
-                swiper.allowSlideNext = false;
-                swiper.allowSlidePrev = false;
-               
-        });
-
-        swiper.navigation.nextEl.addEventListener('click', function () {
-                // swiper.allowSlideNext;
-                swiper.allowSlideNext = true;
-                swiper.rewind = true;
-                swiper.navigation.update();
-        });
-
-        swiper.navigation.prevEl.addEventListener('click', function () {
-                // swiper.allowSlideNext;
-                swiper.allowSlidePrev = true;
-                swiper.rewind = true;
-                swiper.navigation.update();
         });
 
 
@@ -92,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("a").forEach((item, i) => {
                 item.addEventListener('click', (e) => {
                         e.preventDefault();
-                        
+
                 });
         });
 });
