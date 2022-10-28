@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("a").forEach((item, i) => {
                 item.addEventListener('click', (e) => {
                         e.preventDefault();
-
                 });
         });
 });

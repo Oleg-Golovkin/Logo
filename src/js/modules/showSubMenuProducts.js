@@ -87,25 +87,6 @@ const showSubMenuProducts = () => {
             }
         });
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
 
 
