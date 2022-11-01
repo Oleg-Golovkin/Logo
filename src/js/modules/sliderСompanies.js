@@ -25,7 +25,6 @@ const sliderСompanies = () => {
 
         previousSlide.forEach(previousSlide => {
             previousSlide.addEventListener('click', () => {
-                console.log("fsdfa");
                 // При нажатии кнопки назад последний слайдер становится
                 // вперед и т.д. Каждый раз последний слайдер будет новый.
                 perantSlides.prepend(slides[slides.length - 1]);
